@@ -1,0 +1,9 @@
+logs
+project/project
+project/target
+public/images
+target
+tmp
+dist
+.cache
+.history
