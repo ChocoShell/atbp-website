@@ -2,6 +2,7 @@ logs
 project/project
 project/target
 public/images
+public/files
 target
 tmp
 dist
