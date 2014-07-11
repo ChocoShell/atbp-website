@@ -102,19 +102,30 @@ object Application extends Controller {
     if(charJson.isEmpty)
       Ok(views.html.index())
     else {
-      (charJson(0) \ name).asOpt[JsValue] match {
-        case Some(thing) => {
-          (thing(0) \ "ActorData").validate[Actor] match {
-            case  s: JsSuccess[Actor] => {
-              val actor = s.get
-              Ok(views.html.champion(actor))
-            }
-            case _ => {
-              Ok(views.html.index())
-            }
-          }
+      ((charJson(0) \ name)(0) \ "ActorData").validate[Actor] match {
+        case  s: JsSuccess[Actor] => {
+          val actor = s.get
+          Ok(views.html.champion(actor))
         }
-        case None => {
+        case _ => {
+          Ok(views.html.index())
+        }
+      }
+    }
+  }
+
+  def spell(name: String, id: Int) = Action {
+    val charJson = json.filter(x => x.keys.last == name)
+    if(charJson.isEmpty)
+      Ok(views.html.index())
+    else {
+      val spellId: String = "spell"+id.toString
+      (((charJson(0) \ name)(0) \ "ActorData") \ spellId).validate[Spell] match {
+        case  s: JsSuccess[Spell] => {
+          val spell = s.get
+          Ok(views.html.spell(spell))
+        }
+        case _ => {
           Ok(views.html.index())
         }
       }
