@@ -4,7 +4,7 @@
 <div class="self-clear box-p">
     <div class="col-lg-4">
       <h1 class="c">
-        <span>Adventure Time Battle Party</span>
+        <span>ATBP</span>
         <br>
         @actor.displayName
       </h1>
@@ -14,8 +14,8 @@
       <div class="role-box">
         <table cellspacing="2">
           <tbody>
-            <tr><td>Attack Type:</td><td> <span class="hiliteW">Ranged</span></td></tr>
-            <tr><td>Role(s):</td><td> <span class="hiliteW">disabler</span>, <span class="hiliteW">semi-carry</span>, <span class="hiliteW">lane-support</span>, <span class="hiliteW">support</span></td></tr>
+            <tr><td>Attack Type:</td><td> <span class="hiliteW">@actor.attackType.toLowerCase.capitalize</span></td></tr>
+            <tr><td>Role(s):</td><td> <span class="hiliteW">@actor.roles._1.toLowerCase.capitalize</span>, <span class="hiliteW">@actor.roles._2.toLowerCase.capitalize</span>
           </tbody>
         </table>
       </div>
@@ -58,7 +58,7 @@
               </tr>
               <tr class="bg1">
                 <td class="h-atr c">Movement</td>
-                <td><span class="hiliteG">290</span></td>
+                <td><span class="hiliteG"></span></td>
               </tr>
             </tbody></table>
           </div>
@@ -75,7 +75,7 @@
         @for(spell <- actor.spells){
           <a href="#" class="list-group-item">
             <img class="col-lg-2" src=@routes.Assets.at("images/powers/" + spell.spellImage + ".png")>
-            <h3>@spell.name</h3>
+            <h4>@spell.name</h4>
             <p>@spell.desc</p>
           </a>
         }
