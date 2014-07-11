@@ -1,5 +1,87 @@
 @(actor: controllers.Actor)
 
 @main {  
-
+<div class="self-clear box-p">
+    <div class="col-lg-4">
+      <h1 class="c">
+        <span>Adventure Time Battle Party</span>
+        <br>
+        @actor.displayName
+      </h1>
+      <h2 class="c">SubTitle?</h2>
+      <div class="c"><img class="img-bdr" src=@routes.Assets.at("images/heros/" + actor.name + ".png")></div>
+      <br>
+      <div class="role-box">
+        <table cellspacing="2">
+          <tbody>
+            <tr><td>Attack Type:</td><td> <span class="hiliteW">Ranged</span></td></tr>
+            <tr><td>Role(s):</td><td> <span class="hiliteW">disabler</span>, <span class="hiliteW">semi-carry</span>, <span class="hiliteW">lane-support</span>, <span class="hiliteW">support</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div>
+          <h3>@actor.displayName's Stats</h3>
+          <div class="stat-box">
+            <table cellspacing="1">
+              <tbody><tr class="bg1">
+                <td class="h-atr c"><img src="/images/icon_str.png"> STR</td>
+                <td><span class="hiliteG">58.5</span> at 25 (16 + 1.7/level)</td>
+              </tr>
+              <tr class="bg2">
+                <td class="h-atr c"><img src="/images/icon_agi.png"> AGI</td>
+                <td><span class="hiliteG">52.5</span> at 25 (15 + 1.5/level)</td>
+              </tr>
+              <tr class="bg1">
+                <td class="h-atr c"><img src="/images/icon_int.png"> INT</td>
+                <td><span class="hiliteG">97</span> at 25 (22 + 3/level)</td>
+              </tr>
+              <tr class="bg2">
+                <td class="h-atr c">Health</td>
+                <td><span class="hiliteG">1594</span> at 25</td>
+              </tr>
+              <tr class="bg1">
+                <td class="h-atr c">Mana</td>
+                <td><span class="hiliteG">1482</span> at 25</td>
+              </tr>
+              <tr class="bg2">
+                <td class="h-atr c">Damage</td>
+                <td><span class="hiliteG">42</span> - <span class="hiliteG">48</span></td>
+              </tr>
+              <tr class="bg1">
+                <td class="h-atr c">Range</td>
+                <td><span class="hiliteG">600</span></td>
+              </tr>
+              <tr class="bg2">
+                <td class="h-atr c">Armor</td>
+                <td><span class="hiliteG">1.1</span></td>
+              </tr>
+              <tr class="bg1">
+                <td class="h-atr c">Movement</td>
+                <td><span class="hiliteG">290</span></td>
+              </tr>
+            </tbody></table>
+          </div>
+        </div>
+        <div class="self-clear c">
+          <a class="mr5" href="/dota-2/edit-guide"><img src="/images/btn-craft-guide.png"></a>
+          <a class="ml5" href="/edit/video"><img src="/images/btn-add-vid-hero.png"></a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-lg-8">
+      <div class="list-group">
+        @for(spell <- actor.spells){
+          <a href="#" class="list-group-item">
+            <img class="col-lg-2" src=@routes.Assets.at("images/powers/" + spell.spellImage + ".png")>
+            <h3>@spell.name</h3>
+            <p>@spell.desc</p>
+          </a>
+        }
+      </div>
+      <div class="sub-skills self-clear mb15">
+      </div>
+    </div>
+  </div>
 }
