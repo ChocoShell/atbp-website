@@ -85,10 +85,7 @@ object Application extends Controller {
         )
       )
     }
-  }
-
-  
-  
+  }  
 
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").getLines.mkString
   val json: List[JsObject] = (Json.parse(jsonString) \ "Actors").as[List[JsObject]]
@@ -129,6 +126,15 @@ object Application extends Controller {
           Ok(views.html.index())
         }
       }
+    }
+  }
+
+  def build(name: String) = Action {
+    val charJson = json.filter(x => x.keys.last == name)
+    if(charJson.isEmpty)
+      Ok(views.html.index())
+    else {
+      Ok(views.html.index())
     }
   }
 
