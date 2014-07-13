@@ -1,18 +1,14 @@
 package controllers
 
-import play.api.libs.json._
-
-import play.api.libs.functional.syntax._
+import play.api.libs.json._ // JSON library
+import play.api.libs.json.Reads._ // Custom validation helpers
+import play.api.libs.json.Writes._
+import play.api.libs.functional.syntax._ // Combinator syntax
 
 import play.api.mvc.Controller
 import play.api.mvc.Action
-import models._
 
-case class Spell(spellType: String, name: String, desc:String, 
-                 castIndicator: String, range: String, castType: String,
-                 castDelay: String, coolDown: String, globalCoolDown: String,
-                 damage: String, damageRatio: String, area: String,
-                 duration: String, spellImage: String)
+import models._
 
 case class ActorStats(
   attackDamage: String, attackDamagePerLevel: String, attackSpeed: String,
@@ -22,11 +18,46 @@ case class ActorStats(
   spellDamagePerLevel: String, speed: String
 )
 
-case class Actor(name:String, displayName: String, desc: String, attackType: String,
-                 roles: (String, String), stats: ActorStats, 
-                 spells: List[Spell])
+case class Junk(name: String, mod1: String, mod2: String, mod3: String,
+                slot: String, mods: Map[String, (String, String)])
+
+case class Backpack(name: String, description: String, icon: String, 
+                    junk: Map[String, Junk])
 
 object Application extends Controller {
+
+  implicit object JunkReads extends Reads[Junk] {
+    def reads(json: JsValue) = {
+      val jsonMods = json \ "mods" \\ "mod"
+      val mods = (for(mod <- jsonMods)  yield {
+        (mod \ "points").toString -> ((mod \ "stat").toString, (mod \ "value").toString)
+      }).toMap
+     
+      JsSuccess(Junk(
+        (json \ "name").as[String],
+        (json \ "modDescription1").as[String],
+        (json \ "modDescription2").as[String],
+        (json \ "modDescription3").as[String],
+        (json \ "category").as[String],
+        mods
+        )
+      ) 
+    }
+  }
+  
+  implicit object BackpackReads extends Reads[Backpack] {
+    def reads(json: JsValue) = {
+      val junk: List[String]
+
+      JsSuccess(Backpack(
+        (json \ "name").as[String],
+        (json \ "description").as[String],
+        (json \ "icon").as[String],
+        junk
+        )
+      )
+    }
+  }  
 
   implicit val SpellReads: Reads[Spell]  = (
     (JsPath \ "spellType").read[String] and
@@ -45,8 +76,6 @@ object Application extends Controller {
     (JsPath \ "spellIconImage").read[String]
   )(Spell.apply _)
 
-  def json2Spell(json: JsValue): Spell = json.validate[Spell].get
-
   implicit val ActorStatsReads: Reads[ActorStats]  = (
     (JsPath \ "attackDamage").read[String] and
     (JsPath \ "attackDamagePerLevel").read[String] and
@@ -64,38 +93,46 @@ object Application extends Controller {
     (JsPath \ "speed").read[String]
   )(ActorStats.apply _)
 
-  implicit object ActorReads extends Reads[Actor] {
-    def reads(json: JsValue) = {
-      val stats = (json \ "actorStats").validate[ActorStats].get
-      val spells: List[Spell] = List(
-        json2Spell(json \ "spell1"),
-        json2Spell(json \ "spell2"),
-        json2Spell(json \ "spell3"),
-        json2Spell(json \ "spell4")
-      )
 
-      JsSuccess(Actor(
-        (json \ "actorName").as[String],
-        (json \ "playerData" \ "playerDisplayName").as[String],
-        (json \ "playerData" \ "playerDescription").as[String],
-        (json \ "attackType").as[String],
-        ((json \ "role1").as[String], (json \ "role2").as[String]),
-        stats,
-        spells
-        )
-      )
-    }
-  }  
+  implicit val ActorReads: Reads[Actor] = (
+    (JsPath \ "actorName").read[String] and
+    (JsPath \ "playerData" \ "playerDisplayName").read[String] and
+    (JsPath \ "playerData" \ "playerDescription").read[String] and
+    (JsPath \ "attackType").read[String] and
+    (JsPath \ "role1").read[String] and 
+    (JsPath \ "role2").read[String] and
+    (JsPath \ "actorStats").read[ActorStats] and
+    (JsPath \ "spell1").read[Spell] and
+    (JsPath \ "spell2").read[Spell] and
+    (JsPath \ "spell3").read[Spell] and
+    (JsPath \ "spell4").read[Spell]
+  )(Actor.apply _)
+
+  implicit val ActorWrites: Writes[Actor] = (
+    (JsPath \ "actorName").write[String] and
+    (JsPath \ "playerData" \ "playerDisplayName").write[String] and
+    (JsPath \ "playerData" \ "playerDescription").write[String] and
+    (JsPath \ "attackType").write[String] and
+    (JsPath \ "role1").write[String] and 
+    (JsPath \ "role2").write[String] and
+    (JsPath \ "actorStats").write[ActorStats] and
+    (JsPath \ "spell1").write[Spell] and
+    (JsPath \ "spell1").write[Spell] and
+    (JsPath \ "spell1").write[Spell] and
+    (JsPath \ "spell1").write[Spell]    
+  )(unlift(Actor.unapply))
 
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").getLines.mkString
-  val json: List[JsObject] = (Json.parse(jsonString) \ "Actors").as[List[JsObject]]
+  val jsonActors: List[JsObject] = (Json.parse(jsonString) \ "Actors").as[List[JsObject]]
+  val jsonBelts:  List[JsObject] = (Json.parse(jsonString) \ "Belts").as[List[JsObject]]
+  val jsonJunk:   List[JsObject] = (Json.parse(jsonString) \ "Junk").as[List[JsObject]]
 
   def index = Action { request =>
     Ok(views.html.index())
   }
 
   def champion(name: String) = Action {
-    val charJson = json.filter(x => x.keys.last == name)
+    val charJson = jsonActors.filter(x => x.keys.last == name)
     if(charJson.isEmpty)
       Ok(views.html.index())
     else {
@@ -112,7 +149,7 @@ object Application extends Controller {
   }
 
   def spell(name: String, id: Int) = Action {
-    val charJson = json.filter(x => x.keys.last == name)
+    val charJson = jsonActors.filter(x => x.keys.last == name)
     if(charJson.isEmpty)
       Ok(views.html.index())
     else {
@@ -130,11 +167,18 @@ object Application extends Controller {
   }
 
   def build(name: String) = Action {
-    val charJson = json.filter(x => x.keys.last == name)
+    val charJson = jsonBelts.filter(x => x.keys.last == "belt_" + name)
     if(charJson.isEmpty)
       Ok(views.html.index())
     else {
-      Ok(views.html.index())
+      (charJson(0) \ "belt").validate[Backpack] match {
+        case  s: JsSuccess[Backpack] => {
+          Ok(views.html.build(s.get))
+        }
+        case _ => {
+          Ok(views.html.index())
+        }
+      }
     }
   }
 
