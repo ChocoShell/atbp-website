@@ -1,9 +1,9 @@
-Create Belt Case Class
-Create Junk Case Class
+Parse ALL the json - Done  
 
-Make grid of characters
-Give each character own page that goes into more detail
+Make grid of characters  -  
 
-Make Page for Backpacks - Js So they are all on the same page
+Give each character own page that goes into more detail  - Done
 
-Make Backpack upgrade build. - Js so the squares change color on hover and select.
+Make Page for Backpacks - Js So they are all on the same page -
+
+Make Backpack upgrade build. - Js so the squares change color on hover and select. - Working on
