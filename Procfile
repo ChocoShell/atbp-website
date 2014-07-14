@@ -1,1 +1,1 @@
-web: sbt run --http.port=$PORT $PLAY_OPTS
+web: target/universal/stage/bin/retailos -Dhttp.port=${PORT}
