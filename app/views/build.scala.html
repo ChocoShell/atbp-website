@@ -3,33 +3,34 @@
 @main{
 <div id="skill1" class="row">
   <div class="row">
-    <h3 >Hero Skills</h3>
+    <h3>@backpack.name</h3>
     <div class="list-group">
-      @for(slot <- backpack.junk) {
       <div class="list-group-item row">
-        <h4 class="list-group-item-heading">@slot._1</h4>
+      @for(slot <- backpack.junk) {
+      
+        <h4 class="list-group-item-heading">@slot._2.name</h4>
         <table class="col-md-11 table table-bordered" cellspacing="1" style="width:100%">
           <tbody>
             <tr>
               <td class="col-md-1" style="padding:0px">
-                <img class="widthskill-icon" style="width:100%;" src="@routes.Assets.at("images/backpack/junk_1_ax_bass.png")">
+                <img class="widthskill-icon" style="width:100%;" src=@{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+ slot._1 + ".png"}>
               </td>
               <td class="col-md-1"></td>
               <td>&nbsp;</td>
               <td>&nbsp;</td>
-              <td ></td>
               <td>&nbsp;</td>
+              <td>5</td>
               <td>&nbsp;</td>
               <td class="selected c">7</td>
               <td>&nbsp;</td>
-              <td class="selected c">9</td>
+              <td class="selected c">&nbsp;</td>
               <td>&nbsp;</td>
-              <td rowspan="2" class="c" style="background:none; border:none; width:40px;"><img src="/images/key-q.png"></td>
             </tr>
           </tbody>
         </table>
-      </div>
+      
     }
+    </div>
     </div>
   </div>
 </div>
