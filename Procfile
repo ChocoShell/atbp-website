@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/retailos -Dhttp.port=${PORT}
+web: target/universal/stage/bin/atbp-info -Dhttp.port=${PORT}
