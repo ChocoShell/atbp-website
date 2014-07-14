@@ -1,7 +1,8 @@
 logs
+public
 project/project
 project/target
-public/
+project/plugins/target
 target
 tmp
 dist
