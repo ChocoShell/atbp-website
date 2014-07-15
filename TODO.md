@@ -2,6 +2,10 @@ Parse ALL the json - Done
 
 Make grid of characters  -  
 
+Make page for all backpacks
+
+Add backpack skill page
+
 Give each character own page that goes into more detail  - Done
 
 Make Page for Backpacks - Js So they are all on the same page -
