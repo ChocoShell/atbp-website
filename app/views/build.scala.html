@@ -1,59 +1,57 @@
 @(backpack: controllers.Backpack)
 
-@main{
+@main(title = backpack.name){
 <div id="skill1" class="row">
   <div class="row">
     <h3>@backpack.name</h3>
     <div class="list-group">
       <div class="list-group-item row">
       @for(slot <- backpack.junk) {
-      
         <h4 class="list-group-item-heading">@slot._2.name</h4>
         <table class="col-md-11 table table-bordered" cellspacing="1" style="width:100%">
           <tbody>
             <tr>
-              <td class="col-md-1" style="padding:0px">
-                <img class="widthskill-icon" style="width:100%;" src=@{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+ slot._1 + ".png"}>
+              <td class="col-md-1" style="padding:0px;width:20%;height:20%">
+                <img class="widthskill-icon" src=@{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+ slot._1 + ".png"}>
               </td>
-              <td class="col-md-1"></td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>&nbsp;</td>
-              <td>5</td>
-              <td>&nbsp;</td>
-              <td class="selected c">7</td>
-              <td>&nbsp;</td>
-              <td class="selected c">&nbsp;</td>
-              <td>&nbsp;</td>
+              <td class="col-md-1" style="padding:0px;width:20%;height:20%"></td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td style="padding:0px;width:20%;height:20%">5</td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td class="selected c" style="padding:0px;width:20%;height:20%">7</td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td class="selected c" style="padding:0px;width:20%;height:20%">&nbsp;</td>
+              <td style="padding:0px;width:20%;height:20%">&nbsp;</td>
             </tr>
           </tbody>
         </table>
-      
-    }
-    </div>
+      }
+      </div>
     </div>
   </div>
 </div>
 <script>
-$( "td" )
-  .mouseover(function() {
-    $( this ).toggleClass("danger");
+  $( "td" )
+    .mouseover(function() {
+      $( this ).toggleClass("danger");
+    })
+    .mouseout(function() {
+      $( this ).toggleClass("danger");
+    });
+   
+  var n = 0;
+  $( "div.enterleave" )
+    .mouseenter(function() {
+      n += 1;
+      $( this ).find( "span" ).text( "mouse enter x " + n );
+    })
+    .mouseleave(function() {
+      $( this ).find( "span" ).text( "mouse leave" );
+    });
+  $("td").click(function(){
+      $( this ).toggleClass("success");
   })
-  .mouseout(function() {
-    $( this ).toggleClass("danger");
-  });
- 
-var n = 0;
-$( "div.enterleave" )
-  .mouseenter(function() {
-    n += 1;
-    $( this ).find( "span" ).text( "mouse enter x " + n );
-  })
-  .mouseleave(function() {
-    $( this ).find( "span" ).text( "mouse leave" );
-  });
-$("td").click(function(){
-    $( this ).toggleClass("success");
-})
 </script>
 }

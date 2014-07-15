@@ -1,6 +1,6 @@
 @(spell: models.Spell)
 
-@main {  
+@main(title = spell.name) {  
   @if(spell.spellType == "PASSIVE"){
     <li>Passive: @spell.spellType</li>
   } else {
