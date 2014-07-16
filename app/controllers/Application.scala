@@ -114,6 +114,14 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
+  def champs = Action {
+    val actors = for(x <- 0 until jsonActors.length) yield {
+      val key = jsonActors(x).keys.last;
+      (key, ((jsonActors(x) \ key)(0) \ "ActorData" \ "actorName").as[String])
+    }
+    Ok(views.html.champs(actors.toList))
+  }
+
   def champion(name: String) = Action {
     val charJson = jsonActors.filter(x => x.keys.last == name)
     if(charJson.isEmpty)

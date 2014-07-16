@@ -32,7 +32,15 @@
           var mod1 = element.attr("modone");
           var mod2 = element.attr("modtwo");
           var mod3 = element.attr("modthree");
-          return "<div id='tooltip' style='right: auto;' class=''><div class='ttip-box ttip-db'><div class='self-clear'><img class='db-pic float-left margin-right' src="+ src + " >      <div class='ttip-text'>        <h2 class='hiliteW'>" + name + "</h2>          </span><br>" + mod1 + "<br>" + mod2 + "<br>" + mod3 + "<br> </div> </div>  </div></div>";
+          var html = "<div id='tooltip' style='right: auto;' class=''><div><div><img class='float-left margin-right' src="+ src + " ><div><h2>" + name + "</h2></span><br>" + mod1
+          if(mod2 != "") {
+            html += "<br>" + mod2;
+          }
+          if(mod3 != "") {
+            html += "<br>" + mod3;
+          }
+          html += "</div></div></div></div>";
+          return html;
         }
         if ( element.is( "[title]" ) ) {
           return element.attr( "title" );
