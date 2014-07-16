@@ -1,0 +1,14 @@
+.clicked {
+  background-color: green;
+}
+
+.skill {
+  height: 128px;
+  width: 100px;
+  float:left;
+  text-align: center;
+}
+
+.skillImage {
+  float:left;
+}
