@@ -150,8 +150,11 @@ object Application extends Controller {
   }
 
   def belts = Action { request =>
-    for(belt <- jsonBelts) yield (belt(0) \ belt.keys.last)(0) \ "belt"
-    Ok(views.html.belts())
+    val belts = for(x <- 0 until jsonBelts.length) yield {
+      val key = jsonBelts(x).keys.last;
+      (key.drop(5), ((jsonBelts(x) \ key)(0) \ "belt" \ "name").as[String])
+    } 
+    Ok(views.html.belts(belts.toList))
   }
 
   def build(name: String) = Action {
