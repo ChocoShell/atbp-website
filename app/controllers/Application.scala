@@ -165,6 +165,10 @@ object Application extends Controller {
     Ok(views.html.belts(belts.toList))
   }
 
+  def blog = Action {
+    Ok(views.html.blog())
+  }
+
   def build(name: String) = Action {
     val beltName: String = "belt_" + name
     val charJson = jsonBelts.filter(x => beltName == x.keys.last)

@@ -3,12 +3,22 @@
 }
 
 .skill {
-  height: 128px;
-  width: 100px;
+  height: 32px;
+  width: 80px;
   float:left;
   text-align: center;
+  padding-top: 48px;
 }
 
 .skillImage {
   float:left;
+}
+
+td {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.ui-tooltip {
+  max-width: 400px;
 }

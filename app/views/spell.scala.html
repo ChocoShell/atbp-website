@@ -1,21 +1,30 @@
 @(spell: models.Spell)
 
-@main(title = spell.name) {  
-  @if(spell.spellType == "PASSIVE"){
-    <li>Passive: @spell.spellType</li>
-  } else {
-    <li>Spell: @spell.spellType</li>
-  }
-  <li>@spell.name</li> 
-  <li>@spell.castIndicator</li>
-  <li>@spell.range</li>
-  <li>@spell.castType</li>
-  <li>@spell.castDelay</li>
-  <li>@spell.coolDown</li>
-  <li>@spell.globalCoolDown</li>
-  <li>@spell.damage</li>
-  <li>@spell.damageRatio</li> 
-  <li>@spell.area</li>
-  <li>@spell.duration</li>
+@skillurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/powers/"+text+".png"  
+}
 
+@main(title = spell.name) {
+<div class="container">  
+  <img src=@skillurl(spell.spellImage)></img>
+  @if(spell.spellType == "PASSIVE"){
+    <li>Passive</li>
+  } else {
+    @spell.spellType.drop(5) match {
+      case "1" => {<li>Key: Q</li>}
+      case "2" => {<li>Key: W</li>}
+      case "3" => {<li>Key: E</li>}
+    }
+  }  
+  <li>Spell Name: @spell.name</li> 
+  <li>Cast Indicator: @spell.castIndicator.toLowerCase().capitalize</li>
+  <li>Range: @spell.range</li>
+  <li>Cast Type: @spell.castType.toLowerCase().capitalize</li>
+  <li>Cast Delay: @spell.castDelay</li>
+  <li>Cooldown: @spell.coolDown</li>
+  <li>Global Cooldown Reduction: @spell.globalCoolDown</li>
+  <li>Damage: @spell.damage</li>
+  <li>Power Ratio: @spell.damageRatio</li> 
+  <li>Area: @spell.area</li>
+  <li>Duration: @spell.duration</li>
+</div>
 }

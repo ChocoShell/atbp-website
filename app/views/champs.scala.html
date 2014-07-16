@@ -3,13 +3,15 @@
 @champURL(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-" + text + ".jpg"}
 
 @main(title = "Champions") {
-<div class="row">
-  @for(jsonBelt <- jsonBelts) {
-    @jsonBelt._1 match {
-      case "flame" => {<div class="col-md-3"><a href="/champions/@jsonBelt._1"><img src=@champURL("flameprincess")></img></a></div>}
-      case "princessbubblegum" => {<div class="col-md-3"><a href="/champions/@jsonBelt._1"><img src=@champURL("pb")></img></a></div>}
-      case _ => {<div class="col-md-3"> <a href="/champions/@jsonBelt._1"><img src=@champURL(jsonBelt._1)></img></a></div>}
+<div class="container">
+  <div class="row">
+    @for(jsonBelt <- jsonBelts) {
+      @jsonBelt._1 match {
+        case "flame" => {<div class="col-md-3"><a href="/champions/@jsonBelt._1"><img src=@champURL("flameprincess")></img></a></div>}
+        case "princessbubblegum" => {<div class="col-md-3"><a href="/champions/@jsonBelt._1"><img src=@champURL("pb")></img></a></div>}
+        case _ => {<div class="col-md-3"> <a href="/champions/@jsonBelt._1"><img src=@champURL(jsonBelt._1)></img></a></div>}
+      }
     }
-  }
+  </div>
 </div>
 }

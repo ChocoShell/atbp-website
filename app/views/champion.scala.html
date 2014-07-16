@@ -6,7 +6,8 @@
 }
 
 @main(title = actor.displayName){  
-<div class="self-clear box-p row">
+<div class="container">
+  <div class="self-clear box-p row">
     <div class="col-md-6">
       <h1 class="c">
         <span>ATBP</span>
@@ -70,28 +71,28 @@
     <div class="col-md-6">
       <div class="list-group">
           <div class="list-group-item row">   
-            <img class="col-md-2" src=@skillurl(actor.spell1.spellImage) />
+            <a href="/champions/@actor.name/1"><img class="col-md-2" src=@skillurl(actor.spell1.spellImage) /></a>
             <div class="row col-md-10">
               <h4 class="list-group-item-heading">@actor.spell1.name</h4>
               <p class="list-group-item-text">@actor.spell1.desc</p>
             </div>
           </div>
           <div class="list-group-item row">   
-            <img class="col-md-2" src=@skillurl(actor.spell2.spellImage) />
+            <a href="/champions/@actor.name/2"><img class="col-md-2" src=@skillurl(actor.spell2.spellImage) /></a>
             <div class="row col-md-10">
               <h4 class="list-group-item-heading">@actor.spell2.name</h4>
               <p class="list-group-item-text">@actor.spell2.desc</p>
             </div>
           </div>
           <div class="list-group-item row">   
-            <img class="col-md-2" src=@skillurl(actor.spell3.spellImage) />
+            <a href="/champions/@actor.name/3"><img class="col-md-2" src=@skillurl(actor.spell3.spellImage) /></a>
             <div class="row col-md-10">
               <h4 class="list-group-item-heading">@actor.spell3.name</h4>
               <p class="list-group-item-text">@actor.spell3.desc</p>
             </div>
           </div>
           <div class="list-group-item row">   
-            <img class="col-md-2" src=@skillurl(actor.passive.spellImage) />
+            <a href="/champions/@actor.name/4"><img class="col-md-2" src=@skillurl(actor.passive.spellImage)/></a>
             <div class="row col-md-10">
               <h4 class="list-group-item-heading">@actor.passive.name</h4>
               <p class="list-group-item-text">@actor.passive.desc</p>
@@ -102,4 +103,5 @@
       </div>
     </div>
   </div>
+</div>  
 }

@@ -1,10 +1,15 @@
 GET   /                         controllers.Application.index
+
+GET   /blog                     controllers.Application.blog
+GET   /blog/                    controllers.Application.blog
+
+GET   /build                    controllers.Application.belts
+GET   /build/                   controllers.Application.belts
+GET   /build/:name              controllers.Application.build(name:String)
+
 GET   /champions/               controllers.Application.champs
 GET   /champions/:name          controllers.Application.champion(name: String)
 GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)
-
-GET   /build/                   controllers.Application.belts
-GET   /build/:name              controllers.Application.build(name:String)
 
 GET   /assets/*file             controllers.Assets.at(path="/public", file)
