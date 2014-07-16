@@ -1,35 +1,91 @@
-@(backpack: controllers.Backpack)
+@(backpack: models.Backpack)
+
+@packurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+text+".png"}
 
 @main(title = backpack.name){
-<div id="skill1" class="row">
-  <div class="row">
-    <h3>@backpack.name</h3>
-    <div class="list-group">
+<style>
+  .photo {
+    width: 300px;
+    text-align: center;
+  }
+  .photo .ui-widget-header {
+    margin: 1em 0;
+  }
+  .map {
+    width: 350px;
+    height: 350px;
+  }
+  .ui-tooltip {
+    max-width: 400px;
+  }
+  </style>
+  <script>
+  $(function() {
+    $( document ).tooltip({
+      items: "img, [modone]",
+      track: true,
+      content: function() {
+        var element = $( this );
+        if ( element.is( "[modone]" ) ) {
+          var name = element.attr("name");
+          var src  = element.attr("src");
+          var mod1 = element.attr("modone");
+          var mod2 = element.attr("modtwo");
+          var mod3 = element.attr("modthree");
+          return "<div id='tooltip' style='right: auto;' class=''><div class='ttip-box ttip-db'><div class='self-clear'><img class='db-pic float-left margin-right' src="+ src + " >      <div class='ttip-text'>        <h2 class='hiliteW'>" + name + "</h2>          </span><br>" + mod1 + "<br>" + mod2 + "<br>" + mod3 + "<br> </div> </div>  </div></div>";
+        }
+        if ( element.is( "[title]" ) ) {
+          return element.attr( "title" );
+        }
+        if ( element.is( "img" ) ) {
+          return element.attr( "alt" );
+        }
+      }
+    });
+  });
+  </script>
       <div class="list-group-item row">
       @for(slot <- backpack.junk) {
-        <h4 class="list-group-item-heading">@slot._2.name</h4>
-        <table class="col-md-11 table table-bordered" cellspacing="1" style="width:100%">
-          <tbody>
-            <tr>
-              <td class="col-md-1" style="padding:0px;width:20%;height:20%">
-                <img class="widthskill-icon" src=@{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+ slot._1 + ".png"}>
-              </td>
-              <td class="col-md-1" ></td>
-              <td >&nbsp;</td>
-              <td >&nbsp;</td>
-              <td >&nbsp;</td>
-              <td >5</td>
-              <td >&nbsp;</td>
-              <td class="selected c" >7</td>
-              <td >&nbsp;</td>
-              <td class="selected c" >&nbsp;</td>
-              <td >&nbsp;</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <h4 class="list-group-item-heading">@slot._2.name</h4>
+          <img name="@slot._2.name" modone="@slot._2.mod1" modtwo="@slot._2.mod2" modthree="@slot._2.mod3" rel="tooltip" class="skillImage" src=@packurl(slot._1)>
+          <div style="float:right">
+            <table class="table table-bordered" cellspacing="1">
+              <tbody>
+                <tr>
+                  <td class="skill">1</t>
+                  <td class="skill">2</td>
+                  <td class="skill">3</td>
+                  <td class="skill">4</td>
+                  <td class="skill">5</td>
+                  <td class="skill">6</td>
+                  <td class="skill"class="selected c" >7</td>
+                  <td class="skill">8</td>
+                  <td class="skill"class="selected c" >9</td>
+                  <td class="skill">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       }
       </div>
     </div>
+  </div>
+</div>
+<div id='tooltip' style='display:none;right: auto;' class=''>
+  <div class='ttip-box ttip-db'>
+    <div class=''>
+      <img class='db-pic float-left margin-right' src=@packurl(backpack.junk.last._1)>
+      <div class='ttip-text'>
+        <h2 class='hiliteW'>@backpack.junk.last._2.name</h2>
+        @backpack.junk.last._2.mod1<br>
+        @backpack.junk.last._2.mod2<br>
+        @backpack.junk.last._2.mod3<br>
+        <div style='clear:both;'></div>
+        <p></p>     
+      </div>    
+    </div>  
   </div>
 </div>
 <script>

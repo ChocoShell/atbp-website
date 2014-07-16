@@ -1,0 +1,21 @@
+@(belt: models.Backpack)
+
+@main(title = belt.name) {  
+  @if(spell.spellType == "PASSIVE"){
+    <li>Passive: @spell.spellType</li>
+  } else {
+    <li>Spell: @spell.spellType</li>
+  }
+  <li>@spell.name</li> 
+  <li>@spell.castIndicator</li>
+  <li>@spell.range</li>
+  <li>@spell.castType</li>
+  <li>@spell.castDelay</li>
+  <li>@spell.coolDown</li>
+  <li>@spell.globalCoolDown</li>
+  <li>@spell.damage</li>
+  <li>@spell.damageRatio</li> 
+  <li>@spell.area</li>
+  <li>@spell.duration</li>
+
+}

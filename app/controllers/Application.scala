@@ -10,12 +10,6 @@ import play.api.mvc.Action
 
 import models._
 
-case class Junk(name: String, mod1: String, mod2: Option[String], mod3: Option[String],
-                slot: String, mods: Map[String, (String, String)])
-
-case class Backpack(name: String, description: String, icon: String, 
-                    junk: List[(String, Junk)])
-
 object Application extends Controller {
 
   val jsonString = scala.io.Source.fromURL("http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/data/atbp.json").mkString
@@ -25,18 +19,18 @@ object Application extends Controller {
 
   implicit object JunkReads extends Reads[Junk] {
     def reads(json: JsValue) = {
-      val jsonMods = json \ "mods" \\ "mod"
-      val mods = (for(mod <- jsonMods)  yield {
-        (mod \ "points").toString -> ((mod \ "stat").toString, (mod \ "value").toString)
-      }).toMap
-     
+      val jsonMods = json \ "mods" \ "mod"
+      val allMods = jsonMods.as[List[JsObject]] groupBy {x: JsObject => (x  \ "point")}
+      val allMod = for(mod <- allMods) yield (mod._1.as[String].toInt, for(x <- mod._2) yield ((x \ "stat").asOpt[String], (x \ "value").asOpt[String]))
+
+
       JsSuccess(Junk(
         (json \ "name").as[String],
         (json \ "modDescription1").as[String],
         (json \ "modDescription2").asOpt[String],
         (json \ "modDescription3").asOpt[String],
         (json \ "category").as[String],
-        mods
+        allMod.toList.sortBy(_._1)
         )
       ) 
     }
@@ -153,6 +147,11 @@ object Application extends Controller {
         }
       }
     }
+  }
+
+  def belts = Action { request =>
+    for(belt <- jsonBelts) yield (belt(0) \ belt.keys.last)(0) \ "belt"
+    Ok(views.html.belts())
   }
 
   def build(name: String) = Action {

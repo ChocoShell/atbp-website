@@ -3,6 +3,7 @@ GET   /champions/:name          controllers.Application.champion(name: String)
 GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)
 
+GET   /build/                   controllers.Application.build
 GET   /build/:name              controllers.Application.build(name:String)
 
 GET   /assets/*file             controllers.Assets.at(path="/public", file)
