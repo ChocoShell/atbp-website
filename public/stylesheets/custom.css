@@ -14,9 +14,17 @@
   margin:auto;
 }
 
+.skill-row {
+  padding: 10px;
+}
+
 td {
   margin-left: 1px;
   margin-right: 1px;
+}
+
+td.selected {
+  background-color: #8E91F8;
 }
 
 div.ui-tooltip {
@@ -40,8 +48,9 @@ a.champ-link {
 img.junk-image {
   margin : auto;
   height: 20%;
+  padding: 0;
 }
 
 div.skill-table {
-  padding-top: 50px;
+  padding-top: 29px;
 }

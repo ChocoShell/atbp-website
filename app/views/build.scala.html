@@ -48,9 +48,8 @@ $(function() {
     case None => {}
   }
   @for(slot <- backpack.junk) {
-    <div class="row">
+    <div class="row skill-row">
       <div class="col-md-2">
-        <h4 class="list-group-item-heading col-md-12">@slot._2.name</h4>
         <img class="junk-image col-md-9" name="@slot._2.name" modone="@slot._2.mod1" modtwo="@slot._2.mod2" modthree="@slot._2.mod3" rel="tooltip" class="skillImage" src=@packurl(slot._1)>
       </div>
       <div class="col-md-6 skill-table">
@@ -94,7 +93,7 @@ $(function() {
       $( this ).find( "span" ).text( "mouse leave" );
     });
   $("td").click(function(){
-      $( this ).toggleClass("success");
+      $( this ).toggleClass("selected");
   })
 </script>
 }
