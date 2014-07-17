@@ -12,7 +12,7 @@ import models._
 
 object Application extends Controller {
 
-  val jsonString = scala.io.Source.fromURL("http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/data/atbp.json").mkString
+  val jsonString = scala.io.Source.fromFile("public/files/atbp.json").mkString
   val jsonActors: List[JsObject] = (Json.parse(jsonString) \ "Actors").as[List[JsObject]]
   val jsonBelts:  List[JsObject] = (Json.parse(jsonString) \ "Belts").as[List[JsObject]]
   val jsonJunk:   List[JsObject] = (Json.parse(jsonString) \ "Junk").as[List[JsObject]]
