@@ -117,7 +117,7 @@ object Application extends Controller {
   def champs = Action {
     val actors = for(x <- 0 until jsonActors.length) yield {
       val key = jsonActors(x).keys.last;
-      (key, ((jsonActors(x) \ key)(0) \ "ActorData" \ "actorName").as[String])
+      (key, ((jsonActors(x) \ key)(0) \ "ActorData" \ "playerData" \ "playerDisplayName").as[String])
     }
     Ok(views.html.champs(actors.toList))
   }
@@ -140,12 +140,12 @@ object Application extends Controller {
   }
 
   def spell(name: String, id: Int) = Action {
-    val charJson = jsonActors.filter(x => x.keys.last == name)
-    if(charJson.isEmpty)
+    val spellJson = jsonActors.filter(x => x.keys.last == name)
+    if(spellJson.isEmpty)
       Ok(views.html.index())
     else {
       val spellId: String = "spell"+id.toString
-      (((charJson(0) \ name)(0) \ "ActorData") \ spellId).validate[Spell] match {
+      (((spellJson(0) \ name)(0) \ "ActorData") \ spellId).validate[Spell] match {
         case  s: JsSuccess[Spell] => {
           val spell = s.get
           Ok(views.html.spell(spell))
@@ -171,19 +171,39 @@ object Application extends Controller {
 
   def build(name: String) = Action {
     val beltName: String = "belt_" + name
-    val charJson = jsonBelts.filter(x => beltName == x.keys.last)
-    if(charJson.isEmpty)
+    val beltJson = jsonBelts.filter(x => beltName == x.keys.last)
+    if(beltJson.isEmpty)
       Ok(views.html.index())
-    else {
-      ((charJson(0) \ beltName)(0) \ "belt").validate[Backpack] match {
-        case  s: JsSuccess[Backpack] => {
-          Ok(views.html.build(s.get))
-        }
-        case _ => {
-          Ok(views.html.index())
-        }
+      
+    ((beltJson(0) \ beltName)(0) \ "belt").validate[Backpack] match {
+      case  s: JsSuccess[Backpack] => {
+        Ok(views.html.build(s.get)(None))
+      }
+      case _ => {
+        Ok(views.html.index())
       }
     }
   }
 
+  def charBuild(hero: String, belt: String) = Action {
+    val beltName: String = "belt_" + belt
+    val beltJson = jsonBelts.filter(x => beltName == x.keys.last)
+    val charJson = jsonActors.filter(x => x.keys.last == hero)
+    if(charJson.isEmpty)
+      Ok(views.html.index())
+
+    if(beltJson.isEmpty)
+      Ok(views.html.index())
+
+    val char: Actor = ((charJson(0) \ hero)(0) \ "ActorData").validate[Actor].get
+
+    ((beltJson(0) \ beltName)(0) \ "belt").validate[Backpack] match {
+      case  s: JsSuccess[Backpack] => {
+        Ok(views.html.build(s.get)(Some(char)))
+      }
+      case _ => {
+        Ok(views.html.index())
+      }
+    }
+  }
 }

@@ -1,6 +1,8 @@
-@(backpack: models.Backpack)
+@(backpack: models.Backpack)(hero: Option[models.Actor])
 
 @packurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+text+".png"}
+
+@herourl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/champions/"+text+".png"}
 
 @main(title = backpack.name){
 <script>
@@ -37,30 +39,39 @@ $(function() {
 });
 </script>
 <div class="container">
-  <div class="list-group-item row" style="border:none;">
-    @for(slot <- backpack.junk) {
-      <div class="row">
-        <h4 class="list-group-item-heading">@slot._2.name</h4>
-        <img name="@slot._2.name" modone="@slot._2.mod1" modtwo="@slot._2.mod2" modthree="@slot._2.mod3" rel="tooltip" class="skillImage" src=@packurl(slot._1)>
-        <div style="float:right;padding-top: 48px;">
-          <table class="table table-bordered" style="border:none;" cellspacing="1">
-            <tbody>
-              <tr>
-                <td class="skill" >1</td>
-                <td class="skill" >2</td>
-                <td class="skill" >3</td>
-                <td class="skill" >4</td>
-                <td class="skill" >5</td>
-                <td class="skill" >6</td>
-                <td class="skill" >7</td>
-                <td class="skill" >8</td>
-                <td class="skill" >9</td>
-                <td class="skill" >10</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  
+  <div class="list-group-item" style="border:none;">
+  @hero match {
+  case Some(trueHero) => {
+    <img class="junk-image" name="@trueHero.name" src=@herourl(trueHero.name)>
+  }
+    case None => {}
+  }
+  @for(slot <- backpack.junk) {
+    <div class="row">
+      <div class="col-md-2">
+        <h4 class="list-group-item-heading col-md-12">@slot._2.name</h4>
+        <img class="junk-image col-md-9" name="@slot._2.name" modone="@slot._2.mod1" modtwo="@slot._2.mod2" modthree="@slot._2.mod3" rel="tooltip" class="skillImage" src=@packurl(slot._1)>
       </div>
+      <div class="col-md-6 skill-table">
+        <table class="table table-bordered" style="border:none;" cellspacing="1">
+          <tbody>
+            <tr>
+              <td class="skill" >1</td>
+              <td class="skill" >2</td>
+              <td class="skill" >3</td>
+              <td class="skill" >4</td>
+              <td class="skill" >5</td>
+              <td class="skill" >6</td>
+              <td class="skill" >7</td>
+              <td class="skill" >8</td>
+              <td class="skill" >9</td>
+              <td class="skill" >10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     }
   </div>
 </div>
