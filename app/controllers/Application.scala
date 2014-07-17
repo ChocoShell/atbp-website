@@ -50,11 +50,16 @@ object Application extends Controller {
         (for (value <- (json \ "junk").as[JsObject].values)
           yield (value \ "junk_id").as[String]).toList
       }
-
+      val icon = {
+        if((json \ "name").as[String] == "Meta-Science Sack")
+          "iconPack"
+        else
+          "icon"
+        }
       JsSuccess(Backpack(
         (json \ "name").as[String],
         (json \ "description").as[String],
-        (json \ "icon").as[String],
+        (json \ icon).as[String],
         getJunk(junk)
         )
       )
@@ -174,7 +179,7 @@ object Application extends Controller {
     val beltJson = jsonBelts.filter(x => beltName == x.keys.last)
     if(beltJson.isEmpty)
       Ok(views.html.index())
-      
+
     ((beltJson(0) \ beltName)(0) \ "belt").validate[Backpack] match {
       case  s: JsSuccess[Backpack] => {
         Ok(views.html.build(s.get)(None))
