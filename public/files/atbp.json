@@ -3621,7 +3621,7 @@
                   "description":"PROs:  Great Basic Stats.  CONs: No Alternate Stats.",
                   "description_short":"A mighty champion's basic bag of battle junk.  Good for any situation.",
                   "iconBackpack":"backpack_misc",
-                  "icon":"belt_champion",
+                  "icon":"belt_champions",
                   "junk":{
                      "slot1":{
                         "junk_id":"junk_1_golden_sword"

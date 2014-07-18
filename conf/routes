@@ -1,4 +1,5 @@
 GET   /                         controllers.Application.index
+GET   /test                     controllers.Application.test
 
 GET   /blog                     controllers.Application.blog
 GET   /blog/                    controllers.Application.blog
@@ -6,11 +7,15 @@ GET   /blog/                    controllers.Application.blog
 GET   /build                    controllers.Application.belts
 GET   /build/                   controllers.Application.belts
 GET   /build/:name              controllers.Application.build(name:String)
+GET   /build/:name/             controllers.Application.build(name:String)
 GET   /build/:hero/:belt        controllers.Application.charBuild(hero:String, belt:String)
+GET   /build/:hero/:belt/       controllers.Application.charBuild(hero:String, belt:String)
 
+GET   /champions                controllers.Application.champs
 GET   /champions/               controllers.Application.champs
 GET   /champions/:name          controllers.Application.champion(name: String)
 GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)
+GET   /champions/:name/:id/     controllers.Application.spell(name: String, id: Int)
 
 GET   /assets/*file             controllers.Assets.at(path="/public", file)

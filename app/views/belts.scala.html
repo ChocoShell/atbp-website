@@ -1,12 +1,18 @@
-@(jsonBelts: List[(String, String)])
+@(jsonBelts: List[models.Backpack])
 
 @packurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+text+".png"}
 
 @main(title = "Backpacks") {  
 <div class="container">
-  @for(jsonBelt <- jsonBelts) {
-    <a href="/build/@jsonBelt._1">@jsonBelt._2</a>
-    <br>    
-  }
+  <div class="col-md-3">
+    @for(belt <- jsonBelts) {
+      <a href="/build/@belt.icon.drop(5)">@belt.name</a>
+      <br>    
+    }
+  </div>
+  <div class="col-md-8" ng-controller="BeltController as belt">
+  </div>
 </div>
+} {
+  
 }

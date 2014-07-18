@@ -52,7 +52,7 @@ object Application extends Controller {
       }
       val icon = {
         if((json \ "name").as[String] == "Meta-Science Sack")
-          "iconPack"
+          "iconJunk"
         else
           "icon"
         }
@@ -119,6 +119,10 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
+  def test = Action { request =>
+    Ok(views.html.test())
+  }
+
   def champs = Action {
     val actors = for(x <- 0 until jsonActors.length) yield {
       val key = jsonActors(x).keys.last;
@@ -164,8 +168,7 @@ object Application extends Controller {
 
   def belts = Action { request =>
     val belts = for(x <- 0 until jsonBelts.length) yield {
-      val key = jsonBelts(x).keys.last;
-      (key.drop(5), ((jsonBelts(x) \ key)(0) \ "belt" \ "name").as[String])
+      ((jsonBelts(x) \ jsonBelts(x).keys.last)(0) \ "belt").validate[Backpack].get
     } 
     Ok(views.html.belts(belts.toList))
   }
