@@ -11,7 +11,9 @@
               <tr >
                 <td ng-repeat="level in tableCtrl.levels track by $index" class="skill" ng-click="level = !level"
                 ng-class="{'danger': hover, 'selected': level}"  ng-mouseenter="hover = true"
-    ng-mouseleave="hover = false">{{$index + 1}}</td>
+                ng-mouseleave="hover = false">
+                  {{$index + 1}}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -52,26 +54,3 @@ $(function() {
   });
 });
 </script> 
-
-<script>
-  $( "td.skill" )
-    .mouseover(function() {
-      $( this ).toggleClass("danger");
-    })
-    .mouseout(function() {
-      $( this ).toggleClass("danger");
-    });
-   
-  var n = 0;
-  $( "div.enterleave" )
-    .mouseenter(function() {
-      n += 1;
-      $( this ).find( "span" ).text( "mouse enter x " + n );
-    })
-    .mouseleave(function() {
-      $( this ).find( "span" ).text( "mouse leave" );
-    });
-  $("td").click(function(){
-      $( this ).toggleClass("selected");
-  })
-</script>

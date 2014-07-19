@@ -7,6 +7,10 @@
 
 @roleurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icon_role_" + text + ".png"}
 
+@strip(text:String) = @{
+  text.replace("dynamic_","")
+}
+
 @main(title = actor.displayName){  
 <div class="container">
   <div class="self-clear box-p row">
@@ -46,7 +50,6 @@
           <div class="stat-box">
             <table class="table table-striped table-hover" cellspacing="1">
               <tbody>
-                <!--<td class="h-atr c"><img src="/images/icon_int.png"> INT</td>!-->
               <tr class="bg2">
                 <td class="h-atr c">Attack Damage</td>
                 <td><span class="hiliteG">@actor.stats.attackDamage + @actor.stats.attackDamagePerLevel/level</span></td>
@@ -86,40 +89,72 @@
       
     <div class="col-md-6">
       <div class="list-group">
+        @for(spell <- actor.spells) {
           <div class="list-group-item row">   
-            <a href="/champions/@actor.name/1"><img class="col-md-2" src=@skillurl(actor.spell1.spellImage) /></a>
-            <div class="row col-md-10">
-              <h4 class="list-group-item-heading">@actor.spell1.name</h4>
-              <p class="list-group-item-text">@actor.spell1.desc</p>
+            <img class="col-md-3 @spell.spellType.toLowerCase" spell="@spell.spellType.toLowerCase" src=@skillurl(spell.spellImage) />
+            <div class="row col-md-9">
+              <h4 class="list-group-item-heading">@spell.name</h4>
+              <p class="list-group-item-text">@spell.desc</p>
             </div>
           </div>
-          <div class="list-group-item row">   
-            <a href="/champions/@actor.name/2"><img class="col-md-2" src=@skillurl(actor.spell2.spellImage) /></a>
-            <div class="row col-md-10">
-              <h4 class="list-group-item-heading">@actor.spell2.name</h4>
-              <p class="list-group-item-text">@actor.spell2.desc</p>
-            </div>
-          </div>
-          <div class="list-group-item row">   
-            <a href="/champions/@actor.name/3"><img class="col-md-2" src=@skillurl(actor.spell3.spellImage) /></a>
-            <div class="row col-md-10">
-              <h4 class="list-group-item-heading">@actor.spell3.name</h4>
-              <p class="list-group-item-text">@actor.spell3.desc</p>
-            </div>
-          </div>
-          <div class="list-group-item row">   
-            <a href="/champions/@actor.name/4"><img class="col-md-2" src=@skillurl(actor.passive.spellImage)/></a>
-            <div class="row col-md-10">
-              <h4 class="list-group-item-heading">@actor.passive.name</h4>
-              <p class="list-group-item-text">@actor.passive.desc</p>
-            </div>
-          </div>
-      </div>
-      <div class="sub-skills self-clear mb15">
+
+          }
+        </div>
       </div>
     </div>
   </div>
-</div>  
+</div>
+
 } {
-  
+<script>
+  $(function() {
+    $( document )
+    .tooltip({
+      items: "img, [spell]",
+      track: true,
+      content: function() {
+        var element = $( this );
+        @for(spell <- actor.spells) {
+          if ( "@spell.spellType.toLowerCase" == element.attr("spell") ) {
+            console.log("we in");
+            var name = "@spell.name";
+            var key  = "@spell.spellType.toLowerCase.capitalize";
+            var src  = element.attr("src");
+            var ind  = "@strip(spell.castIndicator.toLowerCase).capitalize";
+            var range= "@spell.range";
+            var type = "@spell.castType.toLowerCase.capitalize";
+            var delay= @spell.castDelay/1000.0;
+            var cd   = @spell.coolDown/1000.0;
+            var gcd  = @spell.globalCoolDown/1000.0;
+            var dam  = "@spell.damage";
+            var damr = "@spell.damageRatio";
+            var area = "@spell.area";
+            var dur  = @spell.duration/1000.0;
+            var html = "<div id='tooltip' style='right: auto;max-width: 800px;' class=''><div><div><img class='margin-right' src="+ src + " ><div><h2>" + name + "</h2><h5>" + key + "</h5></span>";
+            html += "<div class='col-md-5'>";
+            html += "<div class='row'>Cast Indicator: "+ind + "</div>";
+            html += "<div class='row'>Range: "+range+"</div>";
+            html += "<div class='row'>Cast Type: "+type+"</div>";
+            html += "<div class='row'>Cast Delay: "+delay+"s</div>";
+            html += "<div class='row'>Cooldown: "+cd + "s</div>";
+            html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
+            html += "<div class='row'>CD Reduced/level: "+gcd+"s</div>";
+            html += "<div class='row'>Damage: " + dam+"</div>";
+            html += "<div class='row'>Damage Ratio: "+damr+"</div>";
+            html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
+            html += "</div></div></div></div></div>";
+            return html;
+          }
+        }
+        if ( element.is( "[title]" ) ) {
+          return element.attr( "title" );
+        }
+        if ( element.is( "img" ) ) {
+          return element.attr( "alt" );
+        }
+      }
+    })
+});
+
+</script> 
 }

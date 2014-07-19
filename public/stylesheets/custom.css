@@ -29,6 +29,9 @@ td.selected {
 
 div.ui-tooltip {
   max-width: 400px;
+  font-size: 15px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .champ-name {
@@ -53,4 +56,8 @@ img.junk-image {
 
 div.skill-table {
   padding-top: 29px;
+}
+
+p {
+  font-size:14px;
 }

@@ -101,19 +101,29 @@ object Application extends Controller {
   )(ActorStats.apply _)
 
 
-  implicit val ActorReads: Reads[Actor] = (
-    (JsPath \ "actorName").read[String] and
-    (JsPath \ "playerData" \ "playerDisplayName").read[String] and
-    (JsPath \ "playerData" \ "playerDescription").read[String] and
-    (JsPath \ "attackType").read[String] and
-    (JsPath \ "role1").read[String] and 
-    (JsPath \ "role2").read[String] and
-    (JsPath \ "actorStats").read[ActorStats] and
-    (JsPath \ "spell1").read[Spell] and
-    (JsPath \ "spell2").read[Spell] and
-    (JsPath \ "spell3").read[Spell] and
-    (JsPath \ "spell4").read[Spell]
-  )(Actor.apply _)
+  implicit object ActorReads extends Reads[Actor] {
+    def reads(json: JsValue) = {
+      
+      JsSuccess(
+        Actor(
+          (json \ "actorName").as[String],
+          (json \ "playerData" \ "playerDisplayName").as[String],
+          (json \ "playerData" \ "playerDescription").as[String],
+          (json \ "attackType").as[String],
+          (json \ "role1").as[String], 
+          (json \ "role2").as[String],
+          (json \ "actorStats").as[ActorStats],
+          List(
+            (json \ "spell1").as[Spell],
+            (json \ "spell2").as[Spell],
+            (json \ "spell3").as[Spell],
+            (json \ "spell4").as[Spell]
+          )
+        )
+      )
+    }
+  }
+    
 
   def index = Action { request =>
     Ok(views.html.index())
