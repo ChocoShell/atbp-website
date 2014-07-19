@@ -28,7 +28,7 @@ td.selected {
 }
 
 div.ui-tooltip {
-  max-width: 400px;
+  max-width: 410px;
   font-size: 15px;
   overflow: hidden;
   white-space: nowrap;
@@ -52,6 +52,10 @@ img.junk-image {
   margin : auto;
   height: 20%;
   padding: 0;
+}
+
+div.passive {
+  background-color:#f9f9f9;
 }
 
 div.skill-table {

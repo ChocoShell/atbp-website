@@ -116,9 +116,9 @@ object Application extends Controller {
           List(
             (json \ "spell1").as[Spell],
             (json \ "spell2").as[Spell],
-            (json \ "spell3").as[Spell],
-            (json \ "spell4").as[Spell]
-          )
+            (json \ "spell3").as[Spell]
+          ),
+          (json \ "spell4").as[Spell]
         )
       )
     }

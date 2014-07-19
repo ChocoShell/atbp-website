@@ -89,8 +89,15 @@
       
     <div class="col-md-6">
       <div class="list-group">
+        <div class="list-group-item row passive">   
+            <img class="col-md-3 @actor.passive.spellType.toLowerCase" spell="@actor.passive.spellType.toLowerCase" src=@skillurl(actor.passive.spellImage) />
+            <div class="row col-md-9">
+              <h4 class="list-group-item-heading">@actor.passive.name</h4>
+              <p class="list-group-item-text">@actor.passive.desc</p>
+            </div>
+          </div>
         @for(spell <- actor.spells) {
-          <div class="list-group-item row">   
+          <div class="list-group-item row spell">   
             <img class="col-md-3 @spell.spellType.toLowerCase" spell="@spell.spellType.toLowerCase" src=@skillurl(spell.spellImage) />
             <div class="row col-md-9">
               <h4 class="list-group-item-heading">@spell.name</h4>
@@ -114,6 +121,36 @@
       track: true,
       content: function() {
         var element = $( this );
+        if ( "@actor.passive.spellType.toLowerCase" == element.attr("spell") ) {
+            console.log("we in");
+            var name = "@actor.passive.name";
+            var key  = "@actor.passive.spellType.toLowerCase.capitalize";
+            var src  = element.attr("src");
+            var ind  = '@strip(actor.passive.castIndicator.toLowerCase, "dynamic_").capitalize';
+            var range= "@actor.passive.range";
+            var type = '@strip(actor.passive.castType.toLowerCase,"targeted_").capitalize';
+            var delay= @actor.passive.castDelay/1000.0;
+            var cd   = @actor.passive.coolDown/1000.0;
+            var gcd  = @actor.passive.globalCoolDown/1000.0;
+            var dam  = "@actor.passive.damage";
+            var damr = "@actor.passive.damageRatio";
+            var area = "@actor.passive.area";
+            var dur  = @actor.passive.duration/1000.0;
+            var html = "<div id='tooltip' style='right: auto;max-width: 400px;' class=''><div><div><img class='margin-right' src="+ src + " ><div><h2>" + name + "</h2><h5>" + key + "</h5></span>";
+            html += "<div class='col-md-5'>";
+            html += "<div class='row'>Cast Indicator: "+ind + "</div>";
+            html += "<div class='row'>Range: "+range+"</div>";
+            html += "<div class='row'>Cast Type: "+type+"</div>";
+            html += "<div class='row'>Cast Delay: "+delay+"s</div>";
+            html += "<div class='row'>Cooldown: "+cd + "s</div>";
+            html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
+            html += "<div class='row'>CD Reduce/level: "+gcd+"s</div>";
+            html += "<div class='row'>Damage: " + dam+"</div>";
+            html += "<div class='row'>Damage Ratio: "+damr+"</div>";
+            html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
+            html += "</div></div></div></div></div>";
+            return html;
+          }
         @for(spell <- actor.spells) {
           if ( "@spell.spellType.toLowerCase" == element.attr("spell") ) {
             console.log("we in");
@@ -138,7 +175,7 @@
             html += "<div class='row'>Cast Delay: "+delay+"s</div>";
             html += "<div class='row'>Cooldown: "+cd + "s</div>";
             html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
-            html += "<div class='row'>CD Reduced/level: "+gcd+"s</div>";
+            html += "<div class='row'>CD Reduce/level: "+gcd+"s</div>";
             html += "<div class='row'>Damage: " + dam+"</div>";
             html += "<div class='row'>Damage Ratio: "+damr+"</div>";
             html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
