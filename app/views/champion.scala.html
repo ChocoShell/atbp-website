@@ -136,52 +136,40 @@
             var damr = "@actor.passive.damageRatio";
             var area = "@actor.passive.area";
             var dur  = @actor.passive.duration/1000.0;
-            var html = "<div id='tooltip' style='right: auto;max-width: 400px;' class=''><div><div><img class='margin-right' src="+ src + " ><div><h2>" + name + "</h2><h5>" + key + "</h5></span>";
-            html += "<div class='col-md-5'>";
-            html += "<div class='row'>Cast Indicator: "+ind + "</div>";
-            html += "<div class='row'>Range: "+range+"</div>";
-            html += "<div class='row'>Cast Type: "+type+"</div>";
-            html += "<div class='row'>Cast Delay: "+delay+"s</div>";
-            html += "<div class='row'>Cooldown: "+cd + "s</div>";
-            html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
-            html += "<div class='row'>CD Reduce/level: "+gcd+"s</div>";
-            html += "<div class='row'>Damage: " + dam+"</div>";
-            html += "<div class='row'>Damage Ratio: "+damr+"</div>";
-            html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
-            html += "</div></div></div></div></div>";
-            return html;
-          }
+        }
         @for(spell <- actor.spells) {
-          if ( "@spell.spellType.toLowerCase" == element.attr("spell") ) {
-            console.log("we in");
-            var name = "@spell.name";
-            var key  = "@spell.spellType.toLowerCase.capitalize";
-            var src  = element.attr("src");
-            var ind  = '@strip(spell.castIndicator.toLowerCase, "dynamic_").capitalize';
-            var range= "@spell.range";
-            var type = '@strip(spell.castType.toLowerCase,"targeted_").capitalize';
-            var delay= @spell.castDelay/1000.0;
-            var cd   = @spell.coolDown/1000.0;
-            var gcd  = @spell.globalCoolDown/1000.0;
-            var dam  = "@spell.damage";
-            var damr = "@spell.damageRatio";
-            var area = "@spell.area";
-            var dur  = @spell.duration/1000.0;
-            var html = "<div id='tooltip' style='right: auto;max-width: 800px;' class=''><div><div><img class='margin-right' src="+ src + " ><div><h2>" + name + "</h2><h5>" + key + "</h5></span>";
-            html += "<div class='col-md-5'>";
-            html += "<div class='row'>Cast Indicator: "+ind + "</div>";
-            html += "<div class='row'>Range: "+range+"</div>";
-            html += "<div class='row'>Cast Type: "+type+"</div>";
-            html += "<div class='row'>Cast Delay: "+delay+"s</div>";
-            html += "<div class='row'>Cooldown: "+cd + "s</div>";
-            html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
-            html += "<div class='row'>CD Reduce/level: "+gcd+"s</div>";
-            html += "<div class='row'>Damage: " + dam+"</div>";
-            html += "<div class='row'>Damage Ratio: "+damr+"</div>";
-            html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
-            html += "</div></div></div></div></div>";
-            return html;
-          }
+        if ( "@spell.spellType.toLowerCase" == element.attr("spell") ) {
+          console.log("we in");
+          var name = "@spell.name";
+          var key  = "@spell.spellType.toLowerCase.capitalize";
+          var src  = element.attr("src");
+          var ind  = '@strip(spell.castIndicator.toLowerCase, "dynamic_").capitalize';
+          var range= "@spell.range";
+          var type = '@strip(spell.castType.toLowerCase,"targeted_").capitalize';
+          var delay= @spell.castDelay/1000.0;
+          var cd   = @spell.coolDown/1000.0;
+          var gcd  = @spell.globalCoolDown/1000.0;
+          var dam  = "@spell.damage";
+          var damr = "@spell.damageRatio";
+          var area = "@spell.area";
+          var dur  = @spell.duration/1000.0;
+        }
+        }
+        if (element.is("[spell]")) {
+          var html = "<div id='tooltip' style='right: auto;max-width: 400px;overflow: hidden;white-space: nowrap;' class=''><div><div><img class='margin-right' src="+ src + " ><div><h2>" + name + "</h2><h5>" + key + "</h5></span>";
+          html += "<div class='col-md-5'>";
+          html += "<div class='row'>Cast Indicator: "+ind + "</div>";
+          html += "<div class='row'>Range: "+range+"</div>";
+          html += "<div class='row'>Cast Type: "+type+"</div>";
+          html += "<div class='row'>Cast Delay: "+delay+"s</div>";
+          html += "<div class='row'>Cooldown: "+cd + "s</div>";
+          html += "</div><div class='col-md-1'></div><div class='col-md-5'>";
+          html += "<div class='row'>CD Reduce/level: "+gcd+"s</div>";
+          html += "<div class='row'>Damage: " + dam+"</div>";
+          html += "<div class='row'>Damage Ratio: "+damr+"</div>";
+          html += "<div class='row'>Area: "+area+"</div><div class='row'>Duration: "+dur+"s</div>";
+          html += "</div></div></div></div></div>";
+          return html;
         }
         if ( element.is( "[title]" ) ) {
           return element.attr( "title" );

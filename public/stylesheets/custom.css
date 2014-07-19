@@ -30,8 +30,6 @@ td.selected {
 div.ui-tooltip {
   max-width: 410px;
   font-size: 15px;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 .champ-name {
