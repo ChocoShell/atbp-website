@@ -6,8 +6,6 @@ GET   /blog/                    controllers.Application.blog
 
 GET   /build                    controllers.Application.belts
 GET   /build/                   controllers.Application.belts
-GET   /build/:name              controllers.Application.build(name:String)
-GET   /build/:name/             controllers.Application.build(name:String)
 GET   /build/:hero/:belt        controllers.Application.charBuild(hero:String, belt:String)
 GET   /build/:hero/:belt/       controllers.Application.charBuild(hero:String, belt:String)
 

@@ -168,8 +168,9 @@ object Application extends Controller {
 
   def belts = Action { request =>
     val belts = for(x <- 0 until jsonBelts.length) yield {
-      ((jsonBelts(x) \ jsonBelts(x).keys.last)(0) \ "belt").validate[Backpack].get
-    } 
+      val key = jsonBelts(x).keys.last;
+      (key.drop(5), ((jsonBelts(x) \ key)(0) \ "belt" \ "name").as[String])
+    }
     Ok(views.html.belts(belts.toList))
   }
 

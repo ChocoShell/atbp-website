@@ -1,6 +1,29 @@
 <!-- home.html -->
-  <div class="jumbotron text-center">
-    <h1>Home Page</h1>
-
-    <p>{{ message }}</p>
+  <div class="container">
+    <div class="list-group-item" style="border:none;">
+      <img class="junk-image" name="@trueHero.name" ng-show="{{ hero }}" src=@herourl(trueHero.name)>
+      <div class="row skill-row" ng-repeat="junk in backpack.junk">
+        <div class="col-md-2">
+          <img class="junk-image col-md-9" name="{{junk._2.name}}" modone="{{junk._2.mod1}}" modtwo="{{junk._2.mod2}}" modthree="{{junk._2.mod3}}" rel="tooltip" class="skillImage" src=@packurl(junk._1)>
+        </div>
+        <div class="col-md-6 skill-table">
+          <table class="table table-bordered" style="border:none;" cellspacing="1">
+            <tbody>
+              <tr>
+                <td class="skill" >1</td>
+                <td class="skill" >2</td>
+                <td class="skill" >3</td>
+                <td class="skill" >4</td>
+                <td class="skill" >5</td>
+                <td class="skill" >6</td>
+                <td class="skill" >7</td>
+                <td class="skill" >8</td>
+                <td class="skill" >9</td>
+                <td class="skill" >10</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>

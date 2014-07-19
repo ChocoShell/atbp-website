@@ -11,8 +11,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" ></script>
   <script src="//code.jquery.com/ui/1.11.0/jquery-ui.min.js" ></script>
+  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js' type="text/javascript"></script>  
+  <script src='@routes.Assets.at("javascripts/script.js")' type="text/javascript"></script>  
 </head>
-<body ng-controller="MainController as mc">
+<body>
   <div class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
@@ -53,7 +55,5 @@
   @content
   <div id="ng-view"></div>
 </body>
-<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js' type="text/javascript"></script>
-<script src='@routes.Assets.at("javascripts/script.js")' type="text/javascript"></script>
   @scripts
 </html>
