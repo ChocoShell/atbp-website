@@ -7,8 +7,8 @@
 
 @roleurl(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icon_role_" + text + ".png"}
 
-@strip(text:String) = @{
-  text.replace("dynamic_","")
+@strip(text:String, filter:String) = @{
+  text.replace(filter,"")
 }
 
 @main(title = actor.displayName){  
@@ -120,9 +120,9 @@
             var name = "@spell.name";
             var key  = "@spell.spellType.toLowerCase.capitalize";
             var src  = element.attr("src");
-            var ind  = "@strip(spell.castIndicator.toLowerCase).capitalize";
+            var ind  = '@strip(spell.castIndicator.toLowerCase, "dynamic_").capitalize';
             var range= "@spell.range";
-            var type = "@spell.castType.toLowerCase.capitalize";
+            var type = '@strip(spell.castType.toLowerCase,"targeted_").capitalize';
             var delay= @spell.castDelay/1000.0;
             var cd   = @spell.coolDown/1000.0;
             var gcd  = @spell.globalCoolDown/1000.0;
