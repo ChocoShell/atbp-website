@@ -1,15 +1,23 @@
 Parse ALL the json - Done  
 
-Make grid of characters  -  
+Make grid of characters  - Done
 
-Make page for all backpacks
+Make page for all backpacks - Done
 
-Add backpack skill page
+Add backpack skill page - Done
 
 Give each character own page that goes into more detail  - Done
 
-Make Page for Backpacks - Js So they are all on the same page -
+Make Page for Backpacks - Js So they are all on the same page - Done
 
-Make Backpack upgrade build. - Js so the squares change color on hover and select. - Working on
+Make Backpack upgrade build. - Js so the squares change color on hover and select. - Done
 
-Make tooltip, showing information about item. - Check here http://jsfiddle.net/webtiki/MpXYr/3/embedded/result/
+Write Guide Format in JSON - 
+
+Set up mongodb Database for guide - 
+
+Send build information back and store - 
+
+Make tooltip, showing information about item. - Done
+
+Add more web design details to Character Grid and Backpack Page - 
