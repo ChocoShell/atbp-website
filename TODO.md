@@ -12,7 +12,7 @@ Make Page for Backpacks - Js So they are all on the same page - Done
 
 Make Backpack upgrade build. - Js so the squares change color on hover and select. - Done
 
-Write Guide Format in JSON - 
+Write Guide Format in JSON - {Author, Body, Skill Build(s)}
 
 Set up mongodb Database for guide - 
 
@@ -21,3 +21,6 @@ Send build information back and store -
 Make tooltip, showing information about item. - Done
 
 Add more web design details to Character Grid and Backpack Page - 
+
+Add Twitch API to check if channels are streaming. - 
+
