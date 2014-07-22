@@ -1,33 +1,21 @@
 (function() {
   var myApp = angular.module('myApp', []);
-  //var data = JSON.parse('public/files/atbp.json');
-
-  myApp.controller('CrudCtrl', function($scope, $http) {
-    $http.get('/assets/files/atbp.json')
-      .then(function(res){
-        $scope.crud = res.data;
-        console.log($scope.crud);
-      });
-  });
-
-  myApp.controller('MainController', function() {
-    this.message = 'Whatup';
-  });
+  var json = (function () {
+    var json = null;
+    $.ajax({
+      'async': false,
+      'global': false,
+      'url': "/assets/files/atbp.json",
+      'dataType': "json",
+      'success': function (data) {
+        json = data;
+      }
+    });
+    return json;
+  })();
 
   myApp.controller('BeltController', ['$http', '$scope', function($http, $scope){
-    var json = (function () {
-      var json = null;
-      $.ajax({
-        'async': false,
-        'global': false,
-        'url': "/assets/files/atbp.json",
-        'dataType': "json",
-        'success': function (data) {
-          json = data;
-        }
-      });
-      return json;
-    })(); 
+    
     this.belts       = json.Belts;
     this.junk        = json.Junk;
     this.beltJson    = this.belts[3].belt_champions[0].belt;
@@ -44,14 +32,6 @@
       }
       return junkVar;
     }
-
-    $scope.collection = ["Item 1", "Item 2"];
-
-    $scope.selectedIndex = 0; // Whatever the default selected index is, use -1 for no selection
-
-    $scope.itemClicked = function ($index) {
-      $scope.selectedIndex = $index;
-    };
 
     this.currentJunk  = this.getJunk(this.beltJson.junk);
 
@@ -74,6 +54,17 @@
 
   myApp.controller('TableController', function(){
     this.levels = [false, false, false, false, false, false, false, false, false, false];
+  });
+
+  myApp.controller('HeroController', function(){
+    this.heroes = json.Actors;
+  });
+
+  myApp.directive('heroTab', function() {
+    return {
+      restrict: 'A',
+      templateUrl: '/assets/templates/heroes.html'
+    }
   });
 
   myApp.directive('backpackTab', function() {

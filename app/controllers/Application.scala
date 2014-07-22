@@ -134,11 +134,7 @@ object Application extends Controller {
   }
 
   def champs = Action {
-    val actors = for(x <- 0 until jsonActors.length) yield {
-      val key = jsonActors(x).keys.last;
-      (key, ((jsonActors(x) \ key)(0) \ "ActorData" \ "playerData" \ "playerDisplayName").as[String])
-    }
-    Ok(views.html.champs(actors.toList))
+    Ok(views.html.champs())
   }
 
   def champion(name: String) = Action {

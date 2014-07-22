@@ -1,39 +1,5 @@
-@(jsonBelts: List[(String, String)])
-
-@champURL(text: String) = @{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-" + text + ".jpg"}
-
 @main(title = "Champions") {
-<div class="container">
-  <div class="row">
-    @for(jsonBelt <- jsonBelts) {
-      @jsonBelt._1 match {
-        case "flame" => {
-          <div class="col-md-3 row">
-            <a class="champ-link" href="/champions/@jsonBelt._1">
-              <img class="champ-image" src=@champURL("flameprincess")></img>
-              <h4 class="champ-name">@jsonBelt._2</h4>
-            </a>
-          </div>}
-        case "princessbubblegum" => {
-          <div class="col-md-3 row">
-            <a class="champ-link" href="/champions/@jsonBelt._1">
-              <img class="champ-image" src=@champURL("pb")></img>
-              <h4 class="champ-name">@jsonBelt._2</h4>
-            </a>
-          </div>
-        }
-        case _ => {
-          <div class="col-md-3 row">
-            <a class="champ-link" href="/champions/@jsonBelt._1">
-              <img class="champ-image" src=@champURL(jsonBelt._1)></img>
-              <h4 class="champ-name">@jsonBelt._2</h4>
-            </a>
-          </div>
-        }
-      }
-    }
-  </div>
-</div>
+<div ng-include="'/assets/templates/heroes.html'"></div>
 } {
   
 }

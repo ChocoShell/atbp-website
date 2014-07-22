@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" ng-controller="HeroController as heroCtrl">
+    <div class="col-md-3 row" ng-repeat="hero in heroCtrl.heroes">
+      <a ng-repeat="(key, data) in hero" class="champ-link" href={{"/champions/"+key}}>
+        <img class="champ-image" src="http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-flameprincess.jpg" ng-if="key=='flame'"></img>
+        <img class="champ-image" ng-src="http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-pb.jpg" ng-if="key=='princessbubblegum'"></img>
+        <img class="champ-image" ng-src={{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-"+key+".jpg"}} ng-if="key!='princessbubblegum' && key!='flame'"></img>
+        <h4 class="champ-name">{{data[0].ActorData.playerData.playerDisplayName}}</h4>
+      </a>
+    </div>
+  </div>
+</div>

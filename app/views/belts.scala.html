@@ -3,10 +3,11 @@
 @main(title= "Backpacks") {
   <div ng-controller="BeltController as beltCtrl" class="container">
     <div class="col-md-3">
-      @for(jsonBelt <- jsonBelts) {
-        <a ng-click="beltCtrl.setBelt('@jsonBelt._1')" href="">@jsonBelt._2</a>
-        <br>    
-      }
+      <ul class="nav nav-pills">
+        @for(jsonBelt <- jsonBelts) {
+          <li style="width:100%;"><a ng-click="beltCtrl.setBelt('@jsonBelt._1')" href="">@jsonBelt._2</a></li>   
+        }
+      </ul>
     </div>
     <div class="col-md-8" ng-include="'/assets/templates/backpack.html'"></div>
   </div>
