@@ -53,9 +53,10 @@
     //$scope.streamers = ['elso17', 'blackle13', 'wondroussapphireswarm', '', '', '', '', '', '', '', '', '', '']
     $scope.streams = [];
     $scope.init = function () {
-      $http.jsonp("https://api.twitch.tv/kraken/search/streams?q=adventure%20time%20battle%20party&callback=JSON_CALLBACK").success(
+      $scope.streams = [];
+      $http.jsonp("https://api.twitch.tv/kraken/search/streams?q=%22adventure%20time%20battle%20party%22&callback=JSON_CALLBACK").success(
         function(data) {
-          $scope.streams = $scope.streams.concat(data.streams);
+          $scope.streams = data.streams;
         }).error(function(data) {});
     }
 

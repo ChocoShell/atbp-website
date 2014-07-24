@@ -6039,7 +6039,7 @@
                   "description":"This miraculous device is used to safely store the most perfect of snacks.",
                   "modDescription1":"+ Health (25/75/100/150)",
                   "modDescription2":"+ Regenerate (2/4/6/8)",
-                  "modDescription3":"+ Speed (.10/.2/.35/.50)",
+                  "modDescription3":"+ Speed (.10/.20/.35/.50)",
                   "mod1Icon":"stat_health",
                   "mod2Icon":"stat_regen",
                   "mod3Icon":"stat_speed",
