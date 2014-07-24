@@ -14,6 +14,52 @@
     return json;
   })();
 
+  myApp.controller('TwitchController', function($http, $scope) {
+
+    /*
+    Elso17
+    Blackle13
+    WondrousSapphireSwarm
+    Darkpooter
+    tadpoleloop
+    PeterUstinox
+    Kerraren
+    Blazeu
+    VibrobladeLoL
+    HailHale
+    Rakathun
+    James_F_Blake
+    stevenno123
+    magicgirlallison
+    ICNein
+    CarnivineNA
+    TipTopFiora
+    freakraven
+    Krashy
+    OkcKing
+    tintenfische
+    Zidkin
+    Remove_
+    Bloobis
+    amkaaron96
+    Furrettpvp
+    crazygameguyx
+    Merkel360
+    Burstofsunshine
+    tidalCadence
+    TheRealDunkmaster
+    Kevinxsenpai
+    */
+    //$scope.streamers = ['elso17', 'blackle13', 'wondroussapphireswarm', '', '', '', '', '', '', '', '', '', '']
+    $scope.streams = [];
+    $scope.init = function () {
+      $http.jsonp("https://api.twitch.tv/kraken/search/streams?q=adventure%20time%20battle%20party&callback=JSON_CALLBACK").success(
+        function(data) {
+          $scope.streams = $scope.streams.concat(data.streams);
+        }).error(function(data) {});
+    }
+
+  });
   myApp.controller('BeltController', ['$http', '$scope', function($http, $scope){
     
     this.belts       = json.Belts;

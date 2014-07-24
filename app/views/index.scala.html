@@ -1,8 +1,13 @@
 @main(title = "Home") {
-<div class="container">
-  <a href="/champions/">Heroes</a>
-  <br>
-  <a href="/build/">Backpacks</a>
+<div class="container" ng-controller='TwitchController as twitchCtrl'>
+  <div class="row" ng-init="init()">
+    <div class="panel panel-default">
+      <div class="panel-heading">Streamers Online</div>
+      <div class="panel-body" ng-repeat="stream in streams">
+        <a href="{{stream.channel.url}}">{{stream.channel.display_name}}</a>
+      </div>
+    </div>
+  </div>
 </div>
 } {
   

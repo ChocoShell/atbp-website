@@ -18,12 +18,12 @@
   padding: 10px;
 }
 
-td {
+td.char {
   margin-left: 1px;
   margin-right: 1px;
 }
 
-td.selected {
+td.char.selected {
   background-color: #8E91F8;
 }
 

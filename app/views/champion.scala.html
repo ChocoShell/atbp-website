@@ -26,15 +26,15 @@
         <table class="table table-striped table-hover" cellspacing="2">
           <tbody>
             <tr>
-              <td>Attack Type:</td>
-              <td> 
+              <td class="char">Attack Type:</td>
+              <td class="char"> 
                 <img src=@roleurl(actor.attackType.toLowerCase)>
                 <span class="hiliteW">@actor.attackType.toLowerCase.capitalize</span>
               </td>
             </tr>
             <tr>
-              <td>Role(s):</td>
-              <td>
+              <td class="char">Role(s):</td>
+              <td class="char">
                 <img alt="@actor.role1" src=@roleurl(actor.role1.toLowerCase)>
                 <span>@actor.role1.toLowerCase.capitalize</span>
                 <img alt="@actor.role2" src=@roleurl(actor.role2.toLowerCase)>
@@ -51,36 +51,36 @@
             <table class="table table-striped table-hover" cellspacing="1">
               <tbody>
               <tr class="bg2">
-                <td class="h-atr c">Attack Damage</td>
-                <td><span class="hiliteG">@actor.stats.attackDamage + @actor.stats.attackDamagePerLevel/level</span></td>
+                <td class="h-atr c char">Attack Damage</td>
+                <td class="char"><span class="hiliteG">@actor.stats.attackDamage + @actor.stats.attackDamagePerLevel/level</span></td>
               </tr>
               <tr class="bg1">
-                <td class="h-atr c">Power Damage</td>
-                <td><span class="hiliteG">@actor.stats.spellDamage + @actor.stats.spellDamagePerLevel/level</span></td>
+                <td class="h-atr c char">Power Damage</td>
+                <td class="char"><span class="hiliteG">@actor.stats.spellDamage + @actor.stats.spellDamagePerLevel/level</span></td>
               </tr>
               <tr class="bg1">
-                <td class="h-atr c">Armor</td>
-                <td><span class="hiliteG">@actor.stats.armor + @actor.stats.armorPerLevel/level</span></td>
+                <td class="h-atr c char">Armor</td>
+                <td class="char"><span class="hiliteG">@actor.stats.armor + @actor.stats.armorPerLevel/level</span></td>
               </tr>
               <tr class="bg2">
-                <td class="h-atr c">Shields</td>
-                <td><span class="hiliteG">@actor.stats.spellResist + @actor.stats.spellResistPerLevel/level</span></td>
+                <td class="h-atr c char">Shields</td>
+                <td class="char"><span class="hiliteG">@actor.stats.spellResist + @actor.stats.spellResistPerLevel/level</span></td>
               </tr>
               <tr class="bg1">
-                <td class="h-atr c">Attack Speed</td>
-                <td><span class="hiliteG">@actor.stats.attackSpeed - @actor.stats.attackSpeedPerLevel/level</span></td>
+                <td class="h-atr c char">Attack Speed</td>
+                <td class="char"><span class="hiliteG">@actor.stats.attackSpeed - @actor.stats.attackSpeedPerLevel/level</span></td>
               </tr>
               <tr class="bg1">
-                <td class="h-atr c">Movement</td>
-                <td><span class="hiliteG">@actor.stats.speed</span></td>
+                <td class="h-atr c char">Movement</td>
+                <td class="char"><span class="hiliteG">@actor.stats.speed</span></td>
               </tr>
               <tr class="bg2">
-                <td class="h-atr c">Health</td>
-                <td><span class="hiliteG">@actor.stats.health + @actor.stats.healthPerLevel/level</span></td>
+                <td class="h-atr c char">Health</td>
+                <td class="char"><span class="hiliteG">@actor.stats.health + @actor.stats.healthPerLevel/level</span></td>
               </tr>
               <tr class="bg2">
-                <td class="h-atr c">Range</td>
-                <td><span class="hiliteG">@actor.stats.attackRange</span></td>
+                <td class="h-atr c char">Range</td>
+                <td class="char"><span class="hiliteG">@actor.stats.attackRange</span></td>
               </tr>
             </tbody></table>
           </div>
