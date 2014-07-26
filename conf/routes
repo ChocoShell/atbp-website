@@ -16,4 +16,7 @@ GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)
 GET   /champions/:name/:id/     controllers.Application.spell(name: String, id: Int)
 
+GET   /streams                  controllers.Application.streams
+GET   /streams/                 controllers.Application.streams
+
 GET   /assets/*file             controllers.Assets.at(path="/public", file)

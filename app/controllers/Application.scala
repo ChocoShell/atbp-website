@@ -184,6 +184,10 @@ object Application extends Controller {
     Ok(views.html.blog())
   }
 
+  def streams = Action {
+    Ok(views.html.streams())
+  }
+
   def build(name: String) = Action {
     val beltName: String = "belt_" + name
     val beltJson = jsonBelts.filter(x => beltName == x.keys.last)
