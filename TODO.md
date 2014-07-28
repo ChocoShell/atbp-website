@@ -22,5 +22,6 @@ Make tooltip, showing information about item. - Done
 
 Add more web design details to Character Grid and Backpack Page - 
 
-Add Twitch API to check if channels are streaming. - 
+Add Twitch API to check if channels are streaming. - Done
 
+Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
