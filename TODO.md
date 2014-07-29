@@ -25,3 +25,5 @@ Add more web design details to Character Grid and Backpack Page -
 Add Twitch API to check if channels are streaming. - Done
 
 Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
+
+Make guide submission form similar to Steam Dota Guides - 
