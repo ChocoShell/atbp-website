@@ -29,3 +29,5 @@ Move all scala html templates to assets files using only angularjs for frontend-
 Make guide submission form similar to Steam Dota Guides - 
 
 Make user login for guide submission and editing - 
+
+Fix Json for new patch - 
