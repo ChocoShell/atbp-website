@@ -5,7 +5,7 @@
     $.ajax({
       'async': false,
       'global': false,
-      'url': "http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/data/atbp.json",
+      'url': "/assets/files/atbp.json",
       'dataType': "json",
       'success': function (data) {
         json = data;
