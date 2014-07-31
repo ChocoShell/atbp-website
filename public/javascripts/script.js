@@ -5,7 +5,7 @@
     $.ajax({
       'async': false,
       'global': false,
-      'url': "/assets/files/atbp.json",
+      'url': "http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/data/atbp.json",
       'dataType': "json",
       'success': function (data) {
         json = data;
@@ -16,45 +16,10 @@
 
   myApp.controller('TwitchController', function($http, $scope) {
 
-    /*
-    Elso17
-    Blackle13
-    WondrousSapphireSwarm
-    Darkpooter
-    tadpoleloop
-    PeterUstinox
-    Kerraren
-    Blazeu
-    VibrobladeLoL
-    HailHale
-    Rakathun
-    James_F_Blake
-    stevenno123
-    magicgirlallison
-    ICNein
-    CarnivineNA
-    TipTopFiora
-    freakraven
-    Krashy
-    OkcKing
-    tintenfische
-    Zidkin
-    Remove_
-    Bloobis
-    amkaaron96
-    Furrettpvp
-    crazygameguyx
-    Merkel360
-    Burstofsunshine
-    tidalCadence
-    TheRealDunkmaster
-    Kevinxsenpai
-    */
-    //$scope.streamers = ['elso17', 'blackle13', 'wondroussapphireswarm', '', '', '', '', '', '', '', '', '', '']
     $scope.streams = [];
     $scope.init = function () {
       $scope.streams = [];
-      $http.jsonp("https://api.twitch.tv/kraken/search/streams?q=%22adventure%20time%22&callback=JSON_CALLBACK").success(
+      $http.jsonp("https://api.twitch.tv/kraken/search/streams?q=%22adventure%20time%20battle%20party%22&callback=JSON_CALLBACK").success(
         function(data) {
           $scope.streams = data.streams;
         }).error(function(data) {});
