@@ -6460,8 +6460,8 @@
                         "name": "Nightosphere Amulet",
                         "description": "Amulet worn by rulers of the Nightosphere.",
                         "modDescription1": "+ Health (50/100/150/225)",
-                        "modDescription2": "+ Attack Vamp (3%/5%/7%/10%)",
-                        "modDescription3": "+ Power Vamp (3%/5%/7%/10%)",
+                        "modDescription2": "+ Attack Vamp (5%/10%/15%/20%)",
+                        "modDescription3": "+ Power Vamp (5%/10%/15%/20%)",
                         "mod1Icon": "stat_health",
                         "mod2Icon": "stat_attack_vamp",
                         "mod3Icon": "stat_power_vamp",
@@ -6478,13 +6478,13 @@
                                     "point": "1",
                                     "stat": "lifeSteal",
                                     "type": "0",
-                                    "value": "3"
+                                    "value": "5"
                                 },
                                 {
                                     "point": "1",
                                     "stat": "spellVamp",
                                     "type": "0",
-                                    "value": "3"
+                                    "value": "5"
                                 },
                                 {
                                     "point": "2",
@@ -6496,13 +6496,13 @@
                                     "point": "2",
                                     "stat": "lifeSteal",
                                     "type": "0",
-                                    "value": "5"
+                                    "value": "10"
                                 },
                                 {
                                     "point": "2",
                                     "stat": "spellVamp",
                                     "type": "0",
-                                    "value": "5"
+                                    "value": "10"
                                 },
                                 {
                                     "point": "3",
@@ -6514,13 +6514,13 @@
                                     "point": "3",
                                     "stat": "lifeSteal",
                                     "type": "0",
-                                    "value": "7"
+                                    "value": "15"
                                 },
                                 {
                                     "point": "3",
                                     "stat": "spellVamp",
                                     "type": "0",
-                                    "value": "7"
+                                    "value": "15"
                                 },
                                 {
                                     "point": "4",
@@ -6532,13 +6532,13 @@
                                     "point": "4",
                                     "stat": "lifeSteal",
                                     "type": "0",
-                                    "value": "10"
+                                    "value": "20"
                                 },
                                 {
                                     "point": "4",
                                     "stat": "spellVamp",
                                     "type": "0",
-                                    "value": "10"
+                                    "value": "20"
                                 }
                             ]
                         },
