@@ -30,4 +30,4 @@ Make guide submission form similar to Steam Dota Guides -
 
 Make user login for guide submission and editing - 
 
-Fix Json for new patch - 
+Fix Json for new patch - Working on
