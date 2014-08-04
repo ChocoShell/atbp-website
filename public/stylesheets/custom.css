@@ -9,14 +9,6 @@
   text-align: center;
 }
 
-.skillImage {
-  display:block;
-  margin:auto;
-}
-
-.skill-row {
-  padding: 10px;
-}
 
 td.char {
   margin-left: 1px;
@@ -46,20 +38,34 @@ a.champ-link {
   text-decoration: none;
 }
 
-img.junk-image {
-  margin : auto;
-  height: 20%;
-  padding: 0;
-}
-
-div.passive {
+.passive {
   background-color:#f9f9f9;
 }
 
-div.skill-table {
+.skill-table {
   padding-top: 29px;
 }
 
 p {
   font-size:14px;
+}
+
+table img{
+  width: 64px;
+  height: 64px;
+   padding: 0;
+  margin:0;
+}
+
+table tr td.junk { 
+  padding: 0;
+  margin:0;
+  width: 64px;
+  height: 64px; 
+}
+
+th {
+  text-align:center;
+  padding: 0;
+  margin:0;
 }

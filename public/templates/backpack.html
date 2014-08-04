@@ -1,26 +1,32 @@
 <!-- backpack.html -->
-  <div class="container">
-    <div class="list-group-item" style="border:none;">
-      <div class="row skill-row" ng-repeat="junk in beltCtrl.currentJunk">
-        <div class="col-md-2" ng-repeat="(key, value) in junk">
-          <img class="junk-image col-md-9" name="{{value[0].junk.name}}" modone="{{value[0].junk.modDescription1}}" modtwo="{{value[0].junk.modDescription2}}" modthree="{{value[0].junk.modDescription3}}" rel="tooltip" class="skillImage" ng-src={{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+key+".png"}}>
-        </div>
-        <div class="col-md-6 skill-table">
-          <table class="table table-bordered" style="border:none;" cellspacing="1" ng-controller="TableController as tableCtrl">
-            <tbody>
-              <tr >
-                <td ng-repeat="level in tableCtrl.levels track by $index" class="skill" ng-click="level = !level"
-                ng-class="{'danger': hover, 'selected': level}"  ng-mouseenter="hover = true"
-                ng-mouseleave="hover = false">
-                  {{$index + 1}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th> 1&nbsp</th>
+        <th> 2&nbsp</th>
+        <th> 3&nbsp</th>
+        <th> 4&nbsp</th>
+        <th> 5&nbsp</th>
+        <th> 6&nbsp</th>
+        <th> 7&nbsp</th>
+        <th> 8&nbsp</th>
+        <th> 9&nbsp</th>
+        <th>10</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="skill-row" ng-repeat="junk in beltCtrl.currentJunk" ng-controller="TableController as tableCtrl">
+        <td ng-repeat="(key, value) in junk" class="junk">
+          <img class="junk-image" name="{{value[0].junk.name}}" modone="{{value[0].junk.modDescription1}}" modtwo="{{value[0].junk.modDescription2}}" modthree="{{value[0].junk.modDescription3}}" rel="tooltip" ng-src={{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+key+".png"}} style="margin:0; padding:0;display:block;" >
+        </td>
+        <td ng-repeat="level in tableCtrl.levels track by $index" ng-click="level = !level"
+          ng-class="{'danger': hover, 'selected': level}"  ng-mouseenter="hover = true"
+          ng-mouseleave="hover = false">
+        </td>
+      </tr>
+    </tbody>
+  </table>
 <script>
 $(function() {
   $( document ).tooltip({
