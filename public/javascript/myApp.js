@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['ngSanitize']);
 
 var json = (function () {
   var json = null;
