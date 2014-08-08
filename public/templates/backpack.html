@@ -21,7 +21,7 @@
           <img class="junk-image" name="{{value[0].junk.name}}" modone="{{value[0].junk.modDescription1}}" modtwo="{{value[0].junk.modDescription2}}" modthree="{{value[0].junk.modDescription3}}" rel="tooltip" ng-src={{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/icons/backpacks/"+key+".png"}} style="margin:0; padding:0;display:block;" >
         </td>
         <td ng-repeat="level in tableCtrl.levels track by $index" ng-click="level = !level"
-          ng-class="{'danger': hover, 'selected': level}"  ng-mouseenter="hover = true"
+          ng-class="{'danger': hover, 'clicked': level}"  ng-mouseenter="hover = true"
           ng-mouseleave="hover = false">
         </td>
       </tr>

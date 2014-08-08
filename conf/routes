@@ -11,6 +11,8 @@ GET   /build/:hero/:belt/       controllers.Application.charBuild(hero:String, b
 
 GET   /champions                controllers.Application.champs
 GET   /champions/               controllers.Application.champs
+GET   /champions/table          controllers.Application.champTable
+GET   /champions/table/         controllers.Application.champTable
 GET   /champions/:name          controllers.Application.champion(name: String)
 GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)

@@ -1,6 +1,30 @@
-Parse ALL the json - Done  
+To Do
+--------
 
-Make grid of characters  - Done
+Set up mongodb Database - 
+  - User Tables
+  - Guide - {Author, Body, Skill Build(s)}
+
+Send build information back and store - 
+
+Add more web design details to Character Grid and Backpack Page - 
+
+Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
+
+Make guide submission form similar to Steam Dota Guides - 
+
+Make user login for guide submission and editing - 
+
+Make Character stats page with all characters. - 
+
+Send data back to back end from build. - 
+
+Done
+--------
+
+Parse ALL the json - Done
+
+Make grid of characters - Done
 
 Make page for all backpacks - Done
 
@@ -12,28 +36,10 @@ Make Page for Backpacks - Js So they are all on the same page - Done
 
 Make Backpack upgrade build. - Js so the squares change color on hover and select. - Done
 
-Write Guide Format in JSON - {Author, Body, Skill Build(s)}
-
-Set up mongodb Database for guide - 
-
-Send build information back and store - 
-
 Make tooltip, showing information about item. - Done
-
-Add more web design details to Character Grid and Backpack Page - 
 
 Add Twitch API to check if channels are streaming. - Done
 
-Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
-
-Make guide submission form similar to Steam Dota Guides - 
-
-Make user login for guide submission and editing - 
+Fix Build Page - Done
 
 Fix Json for new patch - Done
-
-Make Character stats page with all characters. - 
-
-Fix Build Page - 
-
-Send data back to backend from build. - 

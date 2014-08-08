@@ -137,6 +137,10 @@ object Application extends Controller {
     Ok(views.html.champs())
   }
 
+  def champTable = Action {
+    Ok(views.html.champtable())
+  }
+
   def champion(name: String) = Action {
     val charJson = jsonActors.filter(x => x.keys.last == name)
     if(charJson.isEmpty)

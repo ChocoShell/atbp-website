@@ -1,0 +1,34 @@
+<div class="container">
+  <table class="table table-bordered table-hover champs" style="padding:0;" ng-controller="HeroController as heroCtrl">
+      <thead>
+      <tr>
+        <th width="108px"></th>
+        <th>Champion</th>
+        <th>Attack Damage</th>
+        <th>Power Damage</th>
+        <th>Armor</th>
+        <th>Shields</th>
+        <th>Attack Speed</th>
+        <th>Speed</th>
+        <th>Health</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="hero in heroCtrl.heroes">
+        <td align="center" ng-repeat="(key, data) in hero"><a ng-repeat="(key, data) in hero" class="champ-link" href={{"/champions/"+key}}>
+          <img valign="middle" class="champ-image" src="http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-flameprincess.jpg" ng-if="key=='flame'"></img>
+          <img valign="middle" class="champ-image" ng-src="http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-pb.jpg" ng-if="key=='princessbubblegum'"></img>
+          <img valign="middle" class="champ-image" ng-src={{"http://www.cartoonnetwork.com/games/adventuretime/adventure-time-battle-party/assets/img/champions-icon-"+key+".jpg"}} ng-if="key!='princessbubblegum' && key!='flame'"></img>
+        </a></td>
+        <td class="stats" ng-repeat="(key, data) in hero" style="font-weight:bold;"><a href={{"/champions/"+key}}>{{data[0].ActorData.playerData.playerDisplayName}}</a></td>
+        <td class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.attackDamage}} + {{data[0].ActorData.actorStats.attackDamagePerLevel | number:1}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.spellDamage}} + {{data[0].ActorData.actorStats.spellDamagePerLevel}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.armor}} + {{data[0].ActorData.actorStats.armorPerLevel}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.spellResist}} + {{data[0].ActorData.actorStats.spellResistPerLevel}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.attackSpeed}} - {{data[0].ActorData.actorStats.attackSpeedPerLevel}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.speed | number:2}}</td>
+        <td align="center" class="stats" ng-repeat="(key, data) in hero">{{data[0].ActorData.actorStats.health}} + {{data[0].ActorData.actorStats.healthPerLevel}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  
