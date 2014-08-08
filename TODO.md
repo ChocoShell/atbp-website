@@ -15,9 +15,9 @@ Make guide submission form similar to Steam Dota Guides -
 
 Make user login for guide submission and editing - 
 
-Make Character stats page with all characters. - 
-
 Send data back to back end from build. - 
+
+Move Patch Notes to Blog - 
 
 Done
 --------
@@ -43,3 +43,7 @@ Add Twitch API to check if channels are streaming. - Done
 Fix Build Page - Done
 
 Fix Json for new patch - Done
+
+Make Character stats page with all characters. - Done
+
+Make Patch Notes Page - Done
