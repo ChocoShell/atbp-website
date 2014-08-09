@@ -129,6 +129,10 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
+  def news = Action { request =>
+    Ok(views.html.news())
+  }
+
   def test = Action { request =>
     Ok(views.html.test())
   }
