@@ -51,8 +51,8 @@ p {
 }
 
 table img{
-  width: 64px;
-  height: 64px;
+  width: 82px;
+  height: 82px;
   padding: 0;
   margin:0;
 }
@@ -68,8 +68,8 @@ table img.champ-image{
 table tr td.junk { 
   padding: 0;
   margin:0;
-  width: 64px;
-  height: 64px; 
+  width: 83px;
+  height: 83px; 
 }
 
 th {
