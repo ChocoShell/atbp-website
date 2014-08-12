@@ -19,6 +19,8 @@ Send data back to back end from build. -
 
 Move Patch Notes to Blog - 
 
+Decide how to store Guides - 
+
 Done
 --------
 
