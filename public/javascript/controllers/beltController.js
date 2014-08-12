@@ -2,9 +2,12 @@ myApp.controller('BeltController', ['$scope', 'DataService', function($scope, Da
   
   this.belts    = DataService.Belts;
   this.junk     = DataService.Junk;
+
+  // Sets Default Backpack to Champions Backpack
   this.beltJson = this.belts[3].belt_champions[0].belt;
   this.belt     = "champions";
 
+  // Pulls out specific backpack items corresponding to backpack
   this.getJunk = function(junkList) {
     var junkVar = [];
     for(var junkName in junkList) {
@@ -23,6 +26,7 @@ myApp.controller('BeltController', ['$scope', 'DataService', function($scope, Da
     return this.belt === checkBag;
   };
 
+  // Sets the Backpack and gets the appropriate JSON for the items.
   this.setBelt = function(setBelt) {
     this.belt = setBelt;
     var key = "belt_" + setBelt;
@@ -33,5 +37,4 @@ myApp.controller('BeltController', ['$scope', 'DataService', function($scope, Da
       }
     }
   };
-
 }]);

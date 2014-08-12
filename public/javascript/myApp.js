@@ -1,5 +1,6 @@
 var myApp = angular.module('myApp', ['ngSanitize']);
 
+// (Down)loads local Json file 
 var json = (function () {
   var json = null;
   $.ajax({
@@ -14,10 +15,12 @@ var json = (function () {
   return json;
 })();
 
+// Makes JSON data available to controllers
 myApp.factory('DataService', function() {
   return json;
 });
 
+// Main Characters Page
 myApp.directive('heroTab', function() {
   return {
     restrict: 'A',
@@ -25,6 +28,7 @@ myApp.directive('heroTab', function() {
   }
 });
 
+// For the Build/Backpack page
 myApp.directive('backpackTab', function() {
   return {
     restrict: 'A',

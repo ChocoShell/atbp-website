@@ -1,5 +1,4 @@
 GET   /                         controllers.Application.index
-GET   /test                     controllers.Application.test
 
 GET   /blog                     controllers.Application.blog
 GET   /blog/                    controllers.Application.blog

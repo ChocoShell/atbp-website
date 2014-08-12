@@ -1,4 +1,5 @@
 myApp.controller('TwitchController', function($http, $scope) {
+  // Uses Twitch API to find channels streaming Adventure Time Battle Party
   $scope.streams = [];
   $scope.init = function () {
     $scope.streams = [];

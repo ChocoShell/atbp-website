@@ -1,9 +1,10 @@
 To Do
 --------
 
-Set up mongodb Database - 
-  - User Tables
-  - Guide - {Author, Body, Skill Build(s)}
+Set up Datastore - 
+  - User Tables - or generate passwords for guide edits.
+  - Guide - {Author, Body, Array of Skill Build(s)}
+  - Skill Build Table?
 
 Send build information back and store - 
 
