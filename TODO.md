@@ -1,6 +1,8 @@
 To Do
 --------
 
+###Functionality
+
 Set up Datastore - 
   - User Tables - or generate passwords for guide edits.
   - Guide - {Author, Body, Array of Skill Build(s)}
@@ -8,9 +10,7 @@ Set up Datastore -
 
 Send build information back and store - 
 
-Add more web design details to Character Grid and Backpack Page - 
-
-Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
+Decide how to store Guides - 
 
 Make guide submission form similar to Steam Dota Guides - 
 
@@ -18,9 +18,16 @@ Make user login for guide submission and editing -
 
 Send data back to back end from build. - 
 
-Move Patch Notes to Blog - 
 
-Decide how to store Guides - 
+###Design
+
+Add more web design details to Character Grid and Backpack Page - 
+
+###Code Reworking
+
+Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - 
+
+Move Patch Notes to Blog - 
 
 Done
 --------
