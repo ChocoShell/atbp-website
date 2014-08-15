@@ -5,8 +5,9 @@ To Do
 
 Set up Datastore - 
   - User Tables - or generate passwords for guide edits.
-  - Guide - {Author, Body, Array of Skill Build(s)}
-  - Skill Build Table?
+  - Guide - {Title, Author, Body, Array of Skill Build(s)}
+  - Skill Build Table
+  - Many to One Skill build to guide relationship.
 
 Send build information back and store - 
 
