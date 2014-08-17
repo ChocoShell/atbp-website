@@ -8,6 +8,7 @@ Set up Datastore -
   - Guide - {Title, Author, Body, Array of Skill Build(s)}
   - Skill Build Table
   - Many to One Skill build to guide relationship.
+  - Make route to serve mongodb/json guide data.
 
 Send build information back and store - 
 
