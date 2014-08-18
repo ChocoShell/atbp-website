@@ -17,6 +17,9 @@ GET   /champions/:name/         controllers.Application.champion(name: String)
 GET   /champions/:name/:id      controllers.Application.spell(name: String, id: Int)
 GET   /champions/:name/:id/     controllers.Application.spell(name: String, id: Int)
 
+# GET /guide                    controllers.Application.guide
+# GET /guide/                   controllers.Application.guide
+
 GET   /news                     controllers.Application.news
 GET   /news/                    controllers.Application.news
 
