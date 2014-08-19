@@ -17,7 +17,7 @@ myApp.controller('NewsController', function($http, $scope, $sce) {
   // Searches for the latest Post with the phrase Patch Notes and decodes the HTML symbols into proper html.
   $scope.latestPatch = (function() {
     for( var i = 0; i < news.data.children.length; i++) {
-      if(news.data.children[i].data.title.search("Patch Notes") > -1) {
+      if(news.data.children[i].data.title.search("Patch ") > -1) {
         var patch = news.data.children[i].data.selftext_html.replace(/&lt;/g, '<');
         patch = patch.replace(/&gt;/g, '>').replace(/#39;/g, "'").replace(/nbsp;/g, "");
         patch = patch.replace(/&amp;/g, "").replace(/amp;/g, "&").replace(/quot;/g, '"');
