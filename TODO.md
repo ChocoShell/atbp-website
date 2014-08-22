@@ -6,9 +6,11 @@ To Do
 Set up Datastore - 
   - User Tables - or generate passwords for guide edits.
   - Guide - {Title, Author, Body, Array of Skill Build(s)}
-  - Skill Build Table
+  - Skill Build Table - Create Web page for this first.
   - Many to One Skill build to guide relationship.
-  - Make route to serve mongodb/json guide data.
+  - Make route to serve mongodb/json guide data.  
+  
+Create api routes for Guides/Skill Builds  
 
 Send build information back and store - 
 
