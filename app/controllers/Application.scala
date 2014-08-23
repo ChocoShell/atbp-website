@@ -12,6 +12,10 @@ import models._
 
 object Application extends Controller {
 
+
+  // Collections to check for: Guides, Users, Builds
+ 
+
   //Reading Json so it available to all Json to Model Functions.
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").mkString
 
@@ -216,4 +220,8 @@ object Application extends Controller {
   def streams = Action {
     Ok(views.html.streams())
   } 
+  // Page for handling form submission of guides
+  def newGuide = Action {
+    Ok(views.html.newguide())
+  }
 }
