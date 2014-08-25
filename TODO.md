@@ -9,6 +9,7 @@ Set up Datastore -
   - Skill Build Table - Create Web page for this first.
   - Many to One Skill build to guide relationship.
   - Make route to serve mongodb/json guide data.  
+  - Adding ReactiveMongo for DB
   
 Create api routes for Guides/Skill Builds  
 
