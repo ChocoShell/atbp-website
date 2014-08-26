@@ -1,5 +1,7 @@
 package controllers
 
+import scala.concurrent.ExecutionContext.Implicits.global
+
 import play.api.libs.json._ // JSON library
 import play.api.libs.json.Reads._ // Custom validation helpers
 import play.api.libs.json.Writes._
@@ -8,13 +10,23 @@ import play.api.libs.functional.syntax._ // Combinator syntax
 import play.api.mvc.Controller
 import play.api.mvc.Action
 
+// Reactive Mongo imports
+import play.modules.reactivemongo._
+import reactivemongo.api._
+
+// Reactive Mongo plugin, including the JSON-specialized collection
+import play.modules.reactivemongo.MongoController
+import play.modules.reactivemongo.json.collection.JSONCollection
+
 import models._
 
 object Application extends Controller {
 
 
   // Collections to check for: Guides, Users, Builds
- 
+  def userCollection: JSONCollection = db.collection[JSONCollection]("guides")
+  def userCollection: JSONCollection = db.collection[JSONCollection]("users")
+  def userCollection: JSONCollection = db.collection[JSONCollection]("builds")
 
   //Reading Json so it available to all Json to Model Functions.
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").mkString
