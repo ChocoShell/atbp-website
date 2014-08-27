@@ -26,4 +26,11 @@ GET   /news/                    controllers.Application.news
 GET   /streams                  controllers.Application.streams
 GET   /streams/                 controllers.Application.streams
 
+#API routes
+GET   /api/build                controllers.Application.apiBuild
+GET   /api/build/               controllers.Application.apiBuild
+
+GET   /api/guide                controllers.Application.apiGuide
+GET   /api/guide/               controllers.Application.apiGuide
+
 GET   /assets/*file             controllers.Assets.at(path="/public", file)

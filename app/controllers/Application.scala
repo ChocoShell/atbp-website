@@ -22,7 +22,6 @@ import models._
 
 object Application extends Controller {
 
-
   // Collections to check for: Guides, Users, Builds
   def userCollection: JSONCollection = db.collection[JSONCollection]("guides")
   def userCollection: JSONCollection = db.collection[JSONCollection]("users")
