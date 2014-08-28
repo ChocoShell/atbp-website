@@ -235,4 +235,8 @@ object Application extends Controller {
   def newGuide = Action {
     Ok(views.html.newguide())
   }
+
+  def apiBuild = Action {}
+  
+  def apiGuide = Action {}
 }
