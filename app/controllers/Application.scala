@@ -35,7 +35,7 @@ object Application extends Controller {
   val jsonBelts:  List[JsObject] = (Json.parse(jsonString) \ "Belts").as[List[JsObject]]
   val jsonJunk:   List[JsObject] = (Json.parse(jsonString) \ "Junk").as[List[JsObject]]
 
-  /* Json Parsing Functions */
+  /* Json Parsing Functions - Will probably change this all to angular on the client side */
 
   // This reads the json value given to it into the Junk Model.
   implicit object JunkReads extends Reads[Junk] {
@@ -117,7 +117,6 @@ object Application extends Controller {
     (JsPath \ "spellDamagePerLevel").read[String] and
     (JsPath \ "speed").read[String]
   )(ActorStats.apply _)
-
 
   implicit object ActorReads extends Reads[Actor] {
     def reads(json: JsValue) = {    
