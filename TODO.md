@@ -30,7 +30,7 @@ Add more web design details to Character Grid and Backpack Page -
 
 ###Code Reworking
 
-Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - Do this first
+Move all scala html templates to assets files using only angularjs for frontend-backend interaction. - Do this first, next on list
 
 Move Patch Notes to Blog - 
 
