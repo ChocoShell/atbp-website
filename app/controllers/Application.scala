@@ -23,9 +23,9 @@ import models._
 object Application extends Controller {
 
   // Collections to check for: Guides, Users, Builds
-  def userCollection: JSONCollection = db.collection[JSONCollection]("guides")
-  def userCollection: JSONCollection = db.collection[JSONCollection]("users")
-  def userCollection: JSONCollection = db.collection[JSONCollection]("builds")
+  val userCollection: JSONCollection = db.collection[JSONCollection]("guides")
+  val userCollection: JSONCollection = db.collection[JSONCollection]("users")
+  val userCollection: JSONCollection = db.collection[JSONCollection]("builds")
 
   //Reading Json so it available to all Json to Model Functions.
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").mkString
