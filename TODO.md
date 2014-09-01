@@ -3,7 +3,7 @@ To Do
 
 ###Functionality
 
-Set up Datastore - 
+Set up Datastore - Second on list
   - User Tables - or generate passwords for guide edits.
   - Guide - {Title, Author, Body, Array of Skill Build(s)}
   - Skill Build Table - Create Web page for this first.
