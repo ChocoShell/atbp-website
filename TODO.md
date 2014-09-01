@@ -15,8 +15,6 @@ Create api routes for Guides/Skill Builds
 
 Send build information back and store - 
 
-Decide how to store Guides - 
-
 Make guide submission form similar to Steam Dota Guides - 
 
 Make user login for guide submission and editing - 
