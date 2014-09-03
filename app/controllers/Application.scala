@@ -2,6 +2,7 @@ package controllers
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
+import play.api.Play.current
 import play.api.libs.json._ // JSON library
 import play.api.libs.json.Reads._ // Custom validation helpers
 import play.api.libs.json.Writes._
@@ -15,18 +16,19 @@ import play.modules.reactivemongo._
 import reactivemongo.api._
 
 // Reactive Mongo plugin, including the JSON-specialized collection
-import play.modules.reactivemongo.MongoController
+import play.modules.reactivemongo.{ MongoController, ReactiveMongoPlugin }
 import play.modules.reactivemongo.json.collection.JSONCollection
 
 import models._
 
-object Application extends Controller {
+object Application extends Controller with MongoController {
 
   // Collections to check for: Guides, Users, Builds
-  val userCollection: JSONCollection = db.collection[JSONCollection]("guides")
-  val userCollection: JSONCollection = db.collection[JSONCollection]("users")
-  val userCollection: JSONCollection = db.collection[JSONCollection]("builds")
-
+  val guideCollection: JSONCollection = db.collection[JSONCollection]("guides")
+  
+  
+  val userCollection: JSONCollection  = db.collection[JSONCollection]("users")
+  val buildCollection: JSONCollection = db.collection[JSONCollection]("builds")
   //Reading Json so it available to all Json to Model Functions.
   val jsonString = scala.io.Source.fromFile("public/files/atbp.json").mkString
 
@@ -235,7 +237,11 @@ object Application extends Controller {
     Ok(views.html.newguide())
   }
 
-  def apiBuild = Action {}
+  def apiBuild = Action(parse.json) { implicit request =>
+    Ok("Got request [" + request + "]")
+  }
   
-  def apiGuide = Action {}
+  def apiGuide = Action(parse.json) { implicit request =>
+    Ok("Got request [" + request + "]")
+  }
 }
