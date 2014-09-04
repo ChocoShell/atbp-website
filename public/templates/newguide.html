@@ -1,5 +1,31 @@
 <div class="container">
-  <form
-    ng-submit="">
-  </form>
+<form class="form-horizontal">
+  <fieldset>
+    <legend>New Guide</legend>
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-1 control-label">Title</label>
+      <div class="col-lg-3">
+        <input class="form-control" id="inputTitle" placeholder="Title" type="text">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAuthor" class="col-lg-1 control-label">Author</label>
+      <div class="col-lg-3">
+        <input class="form-control" id="inputPassword" placeholder="Author" type="password">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="textArea" class="col-lg-1 control-label">Textarea</label>
+      <div class="col-lg-10">
+        <textarea class="form-control" rows="3" id="textArea"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-1">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-default">Cancel</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
 </div>
