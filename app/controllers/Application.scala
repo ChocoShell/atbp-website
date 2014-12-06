@@ -189,6 +189,7 @@ object Application extends Controller with MongoController {
   def champTable = Action {
     Ok(views.html.champtable())
   }
+  
   // Individual character page with details about powers and stats
   def champion(name: String) = Action {
     val charJson = jsonActors.filter(x => x.keys.last == name)
@@ -224,8 +225,9 @@ object Application extends Controller with MongoController {
       }
     }
   }
+
   // For news about the game
-  def news = Action { request =>
+  def news = Action {
     Ok(views.html.news())
   }
   // Current Streamers who are playing Adventure Time Battle Party

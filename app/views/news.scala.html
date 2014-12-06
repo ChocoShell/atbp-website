@@ -1,5 +1,9 @@
 @main(title = "Home") {
 <div class="container" ng-controller="NewsController as newsCtrl">
+  <div class="row">
+    <strong><a href={{latestPatch.link}}> {{ latestPatch.title }}</a></strong>
+    - Posted on {{latestPatch.created | date:'MMMM dd, yyyy'}}
+  </div>
   <span ng-bind-html="latestPatch.news"></span>
 </div>
 } {

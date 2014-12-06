@@ -3,7 +3,7 @@ Adventure Time Battle Party
 
 This is a website containing information about [Adventure Time Battle Party], a browser MOBA game by Cartoon Network.
 
-Tech
+Technology
 --------
 * [Scala] - An object-functional programming language
 * [Play] - A scalable web framework in Scala
@@ -19,9 +19,11 @@ To run the website locally for development
 ```sh
 git clone https://github.com/ChocoShell/atbp-website.git
 cd atbp-website
-sbt ~ run --http.port=9000
+sbt ~ run
 ```
-then press Enter to start automically compiling on file changes.
+then press Enter to start automatically compiling on file changes.
+
+You can access the site by going to localhost:9000, the default port.
 
 
 The project is divided into two parts:
