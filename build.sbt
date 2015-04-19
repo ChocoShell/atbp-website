@@ -11,5 +11,6 @@ resolvers += "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositor
 libraryDependencies ++= Seq(
   jdbc,
   anorm,
-  "org.reactivemongo" %% "play2-reactivemongo" % "0.11.0-SNAPSHOT"
+  "org.reactivemongo" %% "play2-reactivemongo" % "0.10.5.0.akka23"
 )
+
